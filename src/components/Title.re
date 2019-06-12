@@ -1,0 +1,19 @@
+module Styles = {
+  open Css;
+
+  let title = (~align, ~titleColor, ~titleSize, ~isUppercase, ~weight) =>
+    style([
+      color(hex(titleColor)),
+      fontSize(rem(titleSize)),
+      fontWeight(weight),
+      margin(px(0)),
+      paddingBottom(px(15)),
+      textTransform(isUppercase ? uppercase : none),
+      textAlign(align),
+      width(auto)
+    ]);
+};
+
+[@react.component]
+let make = (~className="", ~align=`center, ~color=Theme.Colors.secondary, ~size=2.1, ~isUppercase=false, ~weight=700, ~children) =>
+  <h2 className=(className ++ " " ++ {Styles.title(~align, ~titleColor=color, ~titleSize=size, ~isUppercase, ~weight)})> children </h2>;
