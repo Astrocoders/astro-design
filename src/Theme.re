@@ -27,8 +27,8 @@ module Border = {
 };
 
 module Spacing = {
-  let base = 1.0;
-  let base2 = base *. 1.5;
-  let base3 = base *. 2.0;
-  let base4 = base *. 2.5;
+  let base = 30;
+  let base2 = base * 1;
+  let base3 = base * 2;
+  let base4 = base * 3;
 };
