@@ -1,5 +1,3 @@
-let str = React.string;
-
 module Styles = {
   open Css;
   let wrapper =

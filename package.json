@@ -10,7 +10,7 @@
     "server": "webpack-dev-server --open",
     "webpack:production": "NODE_ENV=production webpack",
     "start": "start-storybook --port=7007",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -c .storybook -o public",
     "storybook:deploy": "storybook-to-ghpages"
   },
   "keywords": [
@@ -19,7 +19,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@storybook/react": "^5.0.11",
     "bs-css": "^7.2.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
@@ -29,6 +28,7 @@
     "@storybook/addon-actions": "^5.0.11",
     "@storybook/addon-links": "^5.0.11",
     "@storybook/addon-info": "^5.0.11",
+    "@storybook/react": "^5.0.11",
     "@storybook/storybook-deployer": "^2.8.1",
     "bs-platform": "^5.0.4",
     "@babel/core": "^7.2.2",
