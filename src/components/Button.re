@@ -30,11 +30,9 @@ module Styles = {
       lineHeight(rem(0.9)),
       cursor(`pointer),
       fontWeight(400),
-      borderRadius(rounded ? `percent(50.0) : px(4)),
+      borderRadius(rounded ? `percent(Theme.Border.rounded) : px(4)),
       borderStyle(`none),
       display(flexBox),
-      alignItems(center),
-      justifyContent(center),
       textDecoration(none),
       color(hex(Theme.Colors.textWhite)),
       backgroundColor(hex(backgroundColor_)),
@@ -47,6 +45,7 @@ module Styles = {
         hover([backgroundColor(hex(backgroundColor_))]),
         active([backgroundColor(hex(backgroundColor_))]),
       ]),
+      ...Theme.Helpers.fullCenter
     ];
 
     [rules, overridings, fullWidth ? [width(`percent(100.0))] : []]

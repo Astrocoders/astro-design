@@ -23,12 +23,33 @@ module Colors = {
 };
 
 module Border = {
-  let radius = 4;
+  let default = 3;
+  let big = 5;
+  let rounded = 50.;
+};
+
+module FontSize = {
+  let title = 2.1;
+  let subtitle = 1.5;
+  let footerHeading = 1.2;
+  let text = 1.0;
 };
 
 module Spacing = {
   let base = 30;
-  let base2 = base * 1;
-  let base3 = base * 2;
-  let base4 = base * 3;
+  let base2 = base * 2;
+  let base3 = base * 3;
+  let base4 = base * 4;
+};
+
+module Helpers = {
+  open Css;
+  let fullCenter = [
+      alignItems(center),
+      justifyContent(center),
+    ];
+  let centerBlock = [
+      marginLeft(auto),
+      marginRight(auto),
+    ];
 };

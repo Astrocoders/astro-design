@@ -11,5 +11,5 @@ module Styles = {
 };
 
 [@react.component]
-let make = (~className="", ~align=`left, ~color=Theme.Colors.secondary, ~size=1., ~children) =>
+let make = (~className="", ~align=`left, ~color=Theme.Colors.secondary, ~size=Theme.FontSize.text, ~children) =>
   <span className=(className ++ " " ++ {Styles.text(~align,~textColor=color, ~textSize=size)})> children </span>;
