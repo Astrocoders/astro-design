@@ -9,8 +9,6 @@ module Styles = {
       maxWidth(px(1200)),
       marginLeft(auto),
       marginRight(auto),
-      paddingRight(vw(5.)),
-      paddingLeft(vw(5.)),
       width(pct(100.)),
       media("(max-width: 600px)", 
         [
