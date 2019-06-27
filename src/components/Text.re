@@ -5,6 +5,7 @@ module Styles = {
     style([
       color(hex(textColor)),
       fontSize(rem(textSize)),
+      display(inlineBlock),
       lineHeight(pct(textLineHeight)),
       textAlign(align)
     ]);

@@ -6,8 +6,7 @@ module Styles = {
       color(hex(titleColor)),
       fontSize(rem(titleSize)),
       fontWeight(weight),
-      margin(px(0)),
-      paddingBottom(px(15)),
+      paddingBottom(px(Theme.Spacing.base/2)),
       textTransform(isUppercase ? uppercase : none),
       textAlign(align),
       width(auto)
