@@ -37,6 +37,7 @@ module FontSize = {
 
 module Spacing = {
   let base = 30;
+  let baseHalf = base / 2;
   let base2 = base * 2;
   let base3 = base * 3;
   let base4 = base * 4;
