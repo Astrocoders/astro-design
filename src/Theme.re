@@ -54,3 +54,24 @@ module Helpers = {
       marginRight(auto),
     ];
 };
+
+Css.(
+  global(
+    "*",
+    [
+      boxSizing(`borderBox),
+      padding(px(0)),
+      margin(px(0)),
+      outlineWidth(px(0))
+    ],
+  )
+);
+
+Css.(
+  global(
+    "summary::-webkit-details-marker",
+    [
+      display(none)
+    ],
+  )
+);
