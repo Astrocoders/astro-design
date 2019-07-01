@@ -2,12 +2,12 @@ Storybook.(
   storiesOf("Positioning Elements", module_)
   |> add("Row", () => 
     <Row>
-      {React.string("Get Started")}
-      {React.string("See More")}
+      <Button> {Utils.str("Click")} </Button>
+      <Button type_=`secondary> {Utils.str("Wow, nice")} </Button>
     </Row>)
   |> add("Column", () =>
     <Col>
-      {React.string("Get Started")}
-      {React.string("See More")}
+      <Button> {Utils.str("Click")} </Button>
+      <Button type_=`secondary> {Utils.str("Wow, nice")} </Button>
     </Col>)
 );
