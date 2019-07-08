@@ -1,10 +1,11 @@
-import { configure, addDecorator } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
+import { configure, addDecorator } from '@storybook/react'
+import { withInfo } from '@storybook/addon-info'
 
 addDecorator(withInfo)
 
+const req = require.context('../stories', true, /.bs.js$/)
 function loadStories() {
-  require('../stories');
+  req.keys().forEach(filename => req(filename))
 }
 
-configure(loadStories, module);
+configure(loadStories, module)

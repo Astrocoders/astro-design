@@ -29,7 +29,7 @@ module Styles = {
       fontSize(rem(1.0)),
       lineHeight(rem(0.9)),
       cursor(`pointer),
-      fontWeight(400),
+      fontWeight(`num(400)),
       borderRadius(rounded ? `percent(Theme.Border.rounded) : px(4)),
       borderStyle(`none),
       display(flexBox),
