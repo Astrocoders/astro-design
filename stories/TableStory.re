@@ -1,10 +1,14 @@
-let str = React.string;
-
 Storybook.(
   storiesOf("Table", module_)
   |> add("default", () =>
        <Table
          headers=[|"Name", "Email", "Phone"|]
+         title={
+           <Title align=`left size=Theme.FontSize.subtitle pBottom=0>
+             {Utils.str("Lorem ipsum")}
+           </Title>
+         }
+         displayName="lorem ipsums"
          data=[|
            {
              "name": "Yuri",
@@ -47,9 +51,9 @@ Storybook.(
              key={
                row##email;
              }>
-             <TableCell> {str(row##name)} </TableCell>
-             <TableCell> {str(row##email)} </TableCell>
-             <TableCell> {str(row##phone)} </TableCell>
+             <TableCell> {Utils.str(row##name)} </TableCell>
+             <TableCell> {Utils.str(row##email)} </TableCell>
+             <TableCell> {Utils.str(row##phone)} </TableCell>
            </TableRow>
          }
        />
@@ -58,14 +62,15 @@ Storybook.(
        <Table
          headers=[|"Name", "Email", "Phone"|]
          data=[||]
+         displayName="lorem ipsums"
          renderRow={row =>
            <TableRow
              key={
                row##email;
              }>
-             <TableCell> {str(row##name)} </TableCell>
-             <TableCell> {str(row##email)} </TableCell>
-             <TableCell> {str(row##phone)} </TableCell>
+             <TableCell> {Utils.str(row##name)} </TableCell>
+             <TableCell> {Utils.str(row##email)} </TableCell>
+             <TableCell> {Utils.str(row##phone)} </TableCell>
            </TableRow>
          }
        />
@@ -74,15 +79,16 @@ Storybook.(
        <Table
          headers=[|"Name", "Email", "Phone"|]
          data=[||]
+         displayName="lorem ipsums"
          loading=true
          renderRow={row =>
            <TableRow
              key={
                row##email;
              }>
-             <TableCell> {str(row##name)} </TableCell>
-             <TableCell> {str(row##email)} </TableCell>
-             <TableCell> {str(row##phone)} </TableCell>
+             <TableCell> {Utils.str(row##name)} </TableCell>
+             <TableCell> {Utils.str(row##email)} </TableCell>
+             <TableCell> {Utils.str(row##phone)} </TableCell>
            </TableRow>
          }
        />

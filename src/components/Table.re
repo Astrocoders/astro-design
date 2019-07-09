@@ -10,13 +10,28 @@ module Styles = {
       backgroundColor(hex("fafafa")),
     ]);
 
+  let header =
+    style([
+      marginBottom(px(Theme.Spacing.base)),
+      display(flexBox),
+      alignItems(center),
+    ]);
+  let title = style([flexGrow(1.0)]);
+  let search = style([display(flexBox), alignItems(center)]);
+  let searchInput =
+    style([
+      padding(px(5)),
+      marginLeft(px(10)),
+      borderStyle(none),
+      backgroundColor(transparent),
+    ]);
+
   let table =
     style([
       borderCollapse(`collapse),
       tableLayout(auto),
       width(`percent(100.0)),
     ]);
-
   let th =
     style([
       textAlign(`left),
@@ -34,9 +49,7 @@ module Styles = {
       fontSize(rem(0.9)),
       color(hex(Theme.Colors.textSecondary)),
     ]);
-
   let buttons = style([display(flexBox), alignItems(center)]);
-
   let rows = style([marginRight(px(40))]);
   let rowsSelect =
     style([
@@ -44,9 +57,7 @@ module Styles = {
       background(transparent),
       marginLeft(px(Theme.Spacing.baseHalf)),
     ]);
-
   let rowsSelectOption = style([borderStyle(none)]);
-
   let display = style([marginRight(px(40))]);
 };
 
@@ -61,7 +72,15 @@ type action =
   | ChangeNumberOfRows(int);
 
 [@react.component]
-let make = (~headers, ~data, ~renderRow, ~loading=false) => {
+let make =
+    (
+      ~headers,
+      ~data,
+      ~title=React.null,
+      ~displayName,
+      ~renderRow,
+      ~loading=false,
+    ) => {
   let ({page, rows}, dispatch) =
     React.useReducer(
       (state, action) =>
@@ -84,69 +103,83 @@ let make = (~headers, ~data, ~renderRow, ~loading=false) => {
       {Utils.str(value)}
     </option>;
 
-  <div className=Styles.wrapper>
-    <table className=Styles.table>
-      <thead>
-        <tr>
-          {Belt.Array.map(headers, header =>
-             <th className=Styles.th key=header> {Utils.str(header)} </th>
+  <div>
+    <div className=Styles.header>
+      <div className=Styles.title> title </div>
+      <div className=Styles.search>
+        <ReactIcons.FiSearch />
+        <input
+          type_="text"
+          className=Styles.searchInput
+          placeholder={"Search for " ++ displayName}
+        />
+      </div>
+    </div>
+    <div className=Styles.wrapper>
+      <table className=Styles.table>
+        <thead>
+          <tr>
+            {Belt.Array.map(headers, header =>
+               <th className=Styles.th key=header> {Utils.str(header)} </th>
+             )
+             |> React.array}
+          </tr>
+        </thead>
+        <tbody>
+          {loading
+             ? helper(<Loading />)
+             : totalCount === 0
+                 ? helper(Utils.str("No entries")) : React.null}
+          {Belt.Array.map(
+             Belt.Array.slice(data, displayStart - 1, displayEnd),
+             renderRow,
            )
            |> React.array}
-        </tr>
-      </thead>
-      <tbody>
-        {loading
-           ? helper(<Loading />)
-           : totalCount === 0 ? helper(Utils.str("No entries")) : React.null}
-        {Belt.Array.map(
-           Belt.Array.slice(data, displayStart - 1, displayEnd),
-           renderRow,
-         )
-         |> React.array}
-      </tbody>
-    </table>
-    <div className=Styles.pagination>
-      <div className=Styles.rows>
-        <span> {Utils.str("Rows per page:")} </span>
-        <select
-          className=Styles.rowsSelect
-          value={string_of_int(rows)}
-          onChange={e =>
-            dispatch(ChangeNumberOfRows(e->ReactEvent.Form.target##value))
-          }>
-          {option("5")}
-          {option("10")}
-          {option("25")}
-          {option("50")}
-          {option("100")}
-        </select>
-      </div>
-      <div className=Styles.display>
-        {Utils.str(
-           "Showing "
-           ++ string_of_int(displayStart)
-           ++ "-"
-           ++ string_of_int(displayEnd)
-           ++ " of "
-           ++ string_of_int(totalCount),
-         )}
-      </div>
-      <div className=Styles.buttons>
-        <Button
-          rounded=true
-          title="Previous"
-          disabled={displayStart === 1}
-          onClick={_ => dispatch(PreviousPage)}
-          style=[Css.marginRight(Css.px(Theme.Spacing.baseHalf))]>
-          <ReactIcons.FiChevronLeft />
-        </Button>
-        <Button
-          rounded=true
-          title="Next"
-          disabled={displayEnd >= totalCount}
-          onClick={_ => dispatch(NextPage)}>
-          <ReactIcons.FiChevronRight />
-        </Button>
+        </tbody>
+      </table>
+      <div className=Styles.pagination>
+        <div className=Styles.rows>
+          <span> {Utils.str("Rows per page:")} </span>
+          <select
+            className=Styles.rowsSelect
+            value={string_of_int(rows)}
+            onChange={e =>
+              dispatch(ChangeNumberOfRows(e->ReactEvent.Form.target##value))
+            }>
+            {option("5")}
+            {option("10")}
+            {option("25")}
+            {option("50")}
+            {option("100")}
+          </select>
+        </div>
+        <div className=Styles.display>
+          {Utils.str(
+             "Showing "
+             ++ string_of_int(displayStart)
+             ++ "-"
+             ++ string_of_int(displayEnd)
+             ++ " of "
+             ++ string_of_int(totalCount),
+           )}
+        </div>
+        <div className=Styles.buttons>
+          <Button
+            rounded=true
+            title="Previous"
+            disabled={displayStart === 1}
+            onClick={_ => dispatch(PreviousPage)}
+            style=[Css.marginRight(Css.px(Theme.Spacing.baseHalf))]>
+            <ReactIcons.FiChevronLeft />
+          </Button>
+          <Button
+            rounded=true
+            title="Next"
+            disabled={displayEnd >= totalCount}
+            onClick={_ => dispatch(NextPage)}>
+            <ReactIcons.FiChevronRight />
+          </Button>
+        </div>
       </div>
     </div>
   </div>;
