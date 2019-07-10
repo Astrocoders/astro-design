@@ -1,44 +1,63 @@
 module Styles = {
   open Css;
-  let accordion =
-    style([
-      marginBottom(px(Theme.Spacing.base)),
-      marginTop(px(Theme.Spacing.base)),
-      userSelect(none),
-      width(pct(100.)),
-    ]);
 
-  let accordionTitleWrapper =
-    style([
+  let wrapper = style([marginBottom(px(Theme.Spacing.base))]);
+
+  let header = open_ => {
+    let rules = [
+      backgroundColor(hex(Theme.Colors.backgroundContrast)),
+      padding(px(Theme.Spacing.baseHalf)),
+      display(flexBox),
       alignItems(center),
       cursor(`pointer),
-      display(flexBox),
-      justifyContent(spaceBetween),
-      width(pct(100.)),
-    ]);
+    ];
 
-  let accordionTitle =
+    let openRules = [backgroundColor(hex(Theme.Colors.background))];
+
+    [rules, open_ ? openRules : []]->List.concat->style;
+  };
+
+  let chevron = open_ =>
     style([
-      important(width(pct(100.))),
-      important(paddingBottom(px(0))),
+      fontSize(rem(1.3)),
+      marginRight(px(Theme.Spacing.base)),
+      transform(rotate(deg(open_ ? 90 : 0))),
     ]);
 
-  let accordionContent =
+  let title = style([flexGrow(1.0), fontSize(rem(1.0))]);
+
+  let auxTitle = style([fontSize(rem(0.8)), fontWeight(bold)]);
+
+  let body = open_ =>
     style([
-      marginTop(px(Theme.Spacing.baseHalf))
+      padding(px(Theme.Spacing.baseHalf)),
+      display(open_ ? block : none),
     ]);
-
 };
+
+type state = {open_: bool};
+type action =
+  | Toggle;
+
+let str = React.string;
 
 [@react.component]
-let make = (~title, ~children) => {
-  <details className=Styles.accordion>
-    <summary className=Styles.accordionTitleWrapper>
-      <Title color=Theme.Colors.primary weight=400 size=1.4 className=Styles.accordionTitle> {Utils.str(title)} </Title>
-      <img src={Utils.requireAssetURI("../img/chevronUp.svg")} alt="Expand"  />
-    </summary>
-    <div className=Styles.accordionContent> children </div>
-  </details>;
-};
+let make = (~title, ~auxTitle="", ~className="", ~children) => {
+  let ({open_}, dispatch) =
+    React.useReducer(
+      (state, action) =>
+        switch (action) {
+        | Toggle => {open_: !state.open_}
+        },
+      {open_: false},
+    );
 
-let default = make;
+  <div className=Css.(merge([Styles.wrapper, className]))>
+    <div className={Styles.header(open_)} onClick={_ => dispatch(Toggle)}>
+      <ReactIcons.FiChevronRight className={Styles.chevron(open_)} />
+      <div className=Styles.title> {str(title)} </div>
+      <div className=Styles.auxTitle> {str(auxTitle)} </div>
+    </div>
+    <div className={Styles.body(open_)}> children </div>
+  </div>;
+};

@@ -10,7 +10,10 @@ module Colors = {
   let text = "262A41";
   let textSecondary = "828282";
   let textWhite = "fff";
-  
+
+  let background = "f3f3f3";
+  let backgroundContrast = "fafafa";
+
   let border = "C4C4C4";
   let link = "42a5f5";
   let default = "888995";
@@ -45,14 +48,8 @@ module Spacing = {
 
 module Helpers = {
   open Css;
-  let fullCenter = [
-      alignItems(center),
-      justifyContent(center),
-    ];
-  let centerBlock = [
-      marginLeft(auto),
-      marginRight(auto),
-    ];
+  let fullCenter = [alignItems(center), justifyContent(center)];
+  let centerBlock = [marginLeft(auto), marginRight(auto)];
 };
 
 Css.(
@@ -62,16 +59,7 @@ Css.(
       boxSizing(`borderBox),
       padding(px(0)),
       margin(px(0)),
-      outlineWidth(px(0))
-    ],
-  )
-);
-
-Css.(
-  global(
-    "summary::-webkit-details-marker",
-    [
-      display(none)
+      outlineWidth(px(0)),
     ],
   )
 );
