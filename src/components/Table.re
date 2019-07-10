@@ -7,7 +7,7 @@ module Styles = {
       width(`percent(100.0)),
       boxSizing(borderBox),
       padding(px(Theme.Spacing.base)),
-      backgroundColor(hex("fafafa")),
+      backgroundColor(hex(Theme.Colors.backgroundContrast)),
     ]);
 
   let header =
@@ -167,7 +167,7 @@ let make =
           <Button
             rounded=true
             title="Previous"
-            disabled={displayStart === 1}
+            disabled={displayStart <= 1}
             onClick={_ => dispatch(PreviousPage)}
             style=[Css.marginRight(Css.px(Theme.Spacing.baseHalf))]>
             <ReactIcons.FiChevronLeft />

@@ -20,6 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "bs-css": "^8.0.4",
+    "bs-react-icons": "astrocoders/bs-react-icons",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-icons": "^3.7.0",

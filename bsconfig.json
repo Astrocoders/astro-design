@@ -18,6 +18,7 @@
   "namespace": true,
   "bs-dependencies": [
     "bs-css",
+    "bs-react-icons",
     "reason-react"
   ],
   "refmt": 3
