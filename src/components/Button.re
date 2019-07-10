@@ -20,7 +20,7 @@ module Styles = {
       )
     };
 
-  let button = (~type_, ~fullWidth, ~rounded, ~overridings) => {
+  let button = (~type_, ~fullWidth, ~rounded, ~size, ~overridings) => {
     let (backgroundColor_, hoverBackgroundColor, activeBackgroundColor) =
       getBackgroundColor(~type_);
 
@@ -30,7 +30,7 @@ module Styles = {
       lineHeight(rem(0.9)),
       cursor(`pointer),
       fontWeight(`num(400)),
-      borderRadius(rounded ? `percent(Theme.Border.rounded) : px(4)),
+      borderRadius(px(4)),
       borderStyle(`none),
       display(flexBox),
       textDecoration(none),
@@ -45,10 +45,26 @@ module Styles = {
         hover([backgroundColor(hex(backgroundColor_))]),
         active([backgroundColor(hex(backgroundColor_))]),
       ]),
-      ...Theme.Helpers.fullCenter
+      ...Theme.Helpers.fullCenter,
     ];
 
-    [rules, overridings, fullWidth ? [width(`percent(100.0))] : []]
+    let rulesRounded = [
+      borderRadius(`percent(Theme.Border.rounded)),
+      height(px(size)),
+      width(px(size)),
+      boxSizing(borderBox),
+      padding(px(0)),
+      display(flexBox),
+      alignItems(center),
+      justifyContent(center),
+    ];
+
+    [
+      rules,
+      overridings,
+      fullWidth ? [width(`percent(100.0))] : [],
+      rounded ? rulesRounded : [],
+    ]
     ->List.concat
     ->style;
   };
@@ -62,6 +78,7 @@ let make =
       ~disabled=false,
       ~title="",
       ~rounded=false,
+      ~size=35,
       ~onClick=_ => (),
       ~style=[],
       ~children,
@@ -71,6 +88,7 @@ let make =
       ~type_,
       ~fullWidth,
       ~rounded,
+      ~size,
       ~overridings=style,
     )}
     onClick
