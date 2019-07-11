@@ -1,3 +1,3 @@
 Storybook.(
-  storiesOf("Spinner", module_) |> add("default", () => <SpinnerStory />)
+  storiesOf("Spinner", module_) |> add("default", () => <Spinner />)
 );

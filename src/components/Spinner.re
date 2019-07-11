@@ -10,9 +10,10 @@ module Styles = {
   let spinner =
     style([
       animation(
-        ~duration=2,
-        ~timingFunction=`linear,
-        ~iterationCount=`infinite,
+        ~duration=1000,
+        ~timingFunction=linear,
+        ~iterationCount=infinite,
+        ~fillMode=forwards,
         rotate,
       ),
     ]);
