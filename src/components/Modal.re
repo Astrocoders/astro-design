@@ -18,7 +18,7 @@ module Styles = {
       boxSizing(borderBox),
       borderRadius(px(Theme.Border.default)),
       margin2(~v=px(Theme.Spacing.base4), ~h=auto),
-      backgroundColor(hex(Theme.Colors.primary)),
+      backgroundColor(hex(Theme.Colors.secondary)),
     ]);
 
   let header =
@@ -32,7 +32,8 @@ module Styles = {
 [@react.component]
 let make = (~opener, ~content, ~className="") => {
   let (isOpen, setIsOpen) = React.useState(() => false);
-  let container = Js.Option.getExn(ReactDOMRe._getElementById("modal-root"));
+  let container =
+    Belt.Option.getExn(ReactDOMRe._getElementById("modal-root"));
   let modal = () =>
     <div className=Styles.wrapper>
       <div className=Css.(merge([Styles.box, className]))>
