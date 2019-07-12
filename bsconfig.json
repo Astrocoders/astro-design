@@ -19,6 +19,7 @@
   "bs-dependencies": [
     "bs-css",
     "bs-react-icons",
+    "bs-webapi",
     "reason-react"
   ],
   "refmt": 3
