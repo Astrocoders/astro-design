@@ -1,17 +1,10 @@
-module Styles = {
-  open Css;
-
-  let container =
-    style([
-      backgroundColor(hex(Theme.Colors.widget)),
-      boxShadow(
-        ~x=px(1),
-        ~y=px(1),
-        ~blur=px(2),
-        ~spread=px(1),
-        hex(Theme.Colors.widgetShadow),
-      ),
-    ]);
+type rect = {
+  width: int,
+  height: int,
+  top: int,
+  left: int,
+  right: int,
+  bottom: int,
 };
 
 [@bs.module "react-tiny-popover"] [@react.component]
@@ -21,7 +14,13 @@ external make:
     ~isOpen: bool,
     ~align: string,
     ~padding: int,
-    ~content: React.element,
+    ~content: {
+                .
+                "position": string,
+                "targetRect": rect,
+                "popoverRect": rect,
+              } =>
+              React.element,
     ~position: list(string),
     ~transitionDuration: string,
     ~onClickOutside: unit => unit,
@@ -36,16 +35,21 @@ let makeProps =
       ~isOpen: bool=false,
       ~align: string="start",
       ~padding: int=0,
-      ~content: React.element,
+      ~content:
+         {
+           .
+           "position": string,
+           "targetRect": rect,
+           "popoverRect": rect,
+         } =>
+         React.element,
       ~position: list(string)=["bottom"],
       ~transitionDuration: string="0",
       ~onClickOutside: unit => unit=_ => (),
       ~children: React.element,
     ) =>
   makeProps(
-    ~containerClassName={
-      Css.(merge([Styles.container, containerClassName]));
-    },
+    ~containerClassName,
     ~isOpen,
     ~align,
     ~padding,

@@ -3,6 +3,7 @@ module Styles = {
 
   let wrapper =
     style([
+      backgroundColor(hex(Theme.Colors.widget)),
       color(hex(Theme.Colors.text)),
       fontSize(rem(Theme.FontSize.text)),
       padding4(
