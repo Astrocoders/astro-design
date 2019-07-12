@@ -25,7 +25,7 @@ module Styles = {
       getBackgroundColor(~type_);
 
     let rules = [
-      padding2(~v=rem(1.1), ~h=rem(1.3)),
+      padding(px(Theme.Spacing.baseHalf)),
       fontSize(rem(1.0)),
       lineHeight(rem(0.9)),
       cursor(`pointer),

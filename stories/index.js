@@ -1,6 +1,7 @@
 import './AccordionStory.bs'
 import './ButtonStory.bs'
 import './InputStory.bs'
+import './PopoverStory.bs'
 import './PositioningElements.bs'
 import './SpinnerStory.bs'
 import './TableStory.bs'
