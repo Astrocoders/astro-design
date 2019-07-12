@@ -19,6 +19,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@wojtekmaj/react-daterange-picker": "^2.2.0",
     "bs-css": "^8.0.4",
     "bs-react-icons": "astrocoders/bs-react-icons",
     "bs-webapi": "^0.15.2",
