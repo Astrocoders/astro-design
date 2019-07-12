@@ -1,22 +1,21 @@
-[@bs.new] [@bs.module "react-tiny-popover"]
-external make:
-  {
-    .
-    "containerClassName": string,
-    "isOpen": bool,
-    "align": string,
-    "padding": int,
-    "content": React.element,
-    "position": list(string),
-    "transitionDuration": float,
-    "onClickOutside": unit => unit,
-    "children": React.element,
-  } =>
-  React.element =
-  "default";
+module Styles = {
+  open Css;
 
-[@bs.obj]
-external makeProps:
+  let container =
+    style([
+      backgroundColor(hex(Theme.Colors.widget)),
+      boxShadow(
+        ~x=px(1),
+        ~y=px(1),
+        ~blur=px(2),
+        ~spread=px(1),
+        hex(Theme.Colors.widgetShadow),
+      ),
+    ]);
+};
+
+[@bs.module "react-tiny-popover"] [@react.component]
+external make:
   (
     ~containerClassName: string,
     ~isOpen: bool,
@@ -24,38 +23,35 @@ external makeProps:
     ~padding: int,
     ~content: React.element,
     ~position: list(string),
-    ~transitionDuration: float,
+    ~transitionDuration: string,
     ~onClickOutside: unit => unit,
-    ~children: React.element,
-    unit
+    ~children: React.element
   ) =>
-  _ =
-  "";
+  React.element =
+  "default";
 
-[@react.component]
-let make =
+let makeProps =
     (
-      ~containerClassName,
-      ~isOpen,
-      ~align,
-      ~padding,
-      ~content,
-      ~position,
-      ~onClickOutside,
-      ~transitionDuration,
-      ~children,
+      ~containerClassName: string="",
+      ~isOpen: bool=false,
+      ~align: string="start",
+      ~padding: int=0,
+      ~content: React.element,
+      ~position: list(string)=["bottom"],
+      ~transitionDuration: string="0",
+      ~onClickOutside: unit => unit=_ => (),
+      ~children: React.element,
     ) =>
-  make(
-    makeProps(
-      ~containerClassName,
-      ~isOpen,
-      ~align,
-      ~padding,
-      ~content,
-      ~position,
-      ~transitionDuration,
-      ~onClickOutside,
-      ~children,
-      (),
-    ),
+  makeProps(
+    ~containerClassName={
+      Css.(merge([Styles.container, containerClassName]));
+    },
+    ~isOpen,
+    ~align,
+    ~padding,
+    ~content,
+    ~position,
+    ~transitionDuration,
+    ~onClickOutside,
+    ~children,
   );

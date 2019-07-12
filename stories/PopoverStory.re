@@ -1,40 +1,40 @@
-module PopoverTest1 = {
+module PopoverTest = {
   module Styles = {
     open Css;
 
-    let popover =
-      style([
-        backgroundColor(hex("fff")),
-        boxShadow(
-          ~x=px(1),
-          ~y=px(1),
-          ~blur=px(2),
-          ~spread=px(1),
-          hex("ccc"),
-        ),
-      ]);
+    let wrapper = style([display(flexBox), justifyContent(center)]);
+    let logoutItem = style([color(hex(Theme.Colors.error))]);
   };
 
   [@react.component]
   let make = () => {
     let (isOpen, setIsOpen) = React.useState(() => false);
 
-    <Popover
-      containerClassName=Styles.popover
-      isOpen
-      align="start"
-      padding=0
-      position=["bottom"]
-      onClickOutside={_ => setIsOpen(_ => false)}
-      content={<div> {Utils.str("content")} </div>}
-      transitionDuration=0.1>
-      <Button onClick={_ => setIsOpen(_ => !isOpen)}>
-        {Utils.str("Toggle Popover")}
-      </Button>
-    </Popover>;
+    <div className=Styles.wrapper>
+      <Popover
+        isOpen
+        content={
+          <div>
+            <PopoverMenuItem onClick={_ => ()}>
+              {Utils.str("Profile")}
+            </PopoverMenuItem>
+            <PopoverMenuItem onClick={_ => ()}>
+              {Utils.str("Users")}
+            </PopoverMenuItem>
+            <PopoverMenuItem onClick={_ => ()} className=Styles.logoutItem>
+              {Utils.str("Logout")}
+            </PopoverMenuItem>
+          </div>
+        }
+        onClickOutside={_ => setIsOpen(_ => false)}>
+        <Button onClick={_ => setIsOpen(_ => !isOpen)}>
+          {Utils.str("Toggle Popover")}
+        </Button>
+      </Popover>
+    </div>;
   };
 };
 
 Storybook.(
-  storiesOf("Popover", module_) |> add("default", () => <PopoverTest1 />)
+  storiesOf("Popover", module_) |> add("default", () => <PopoverTest />)
 );
