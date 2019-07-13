@@ -16,4 +16,7 @@ Storybook.(
   |> add("disabled", () =>
        <Button disabled=true> {Utils.str("Lorem ipsum")} </Button>
      )
+  |> add("add", () => <AddButton />)
+  |> add("edit", () => <EditButton />)
+  |> add("delete", () => <DeleteButton />)
 );
