@@ -77,7 +77,7 @@ let make =
     (
       ~headers,
       ~data,
-      ~title=React.null,
+      ~title=() => React.null,
       ~displayName,
       ~renderRow,
       ~loading=false,
@@ -109,7 +109,7 @@ let make =
     <div className=Styles.header>
       <div className=Styles.title>
         <Title align=`left size=Theme.FontSize.subtitle pBottom=0>
-          title
+          {title()}
         </Title>
       </div>
       <div className=Styles.search>

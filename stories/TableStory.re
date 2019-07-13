@@ -3,8 +3,8 @@ Storybook.(
   |> add("default", () =>
        <Table
          headers=[|"Name", "Email", "Phone"|]
-         title={
-           <Title align=`left size=Theme.FontSize.subtitle pBottom=0>
+         title={() =>
+           <>
              {Utils.str("Lorem ipsum")}
              <Button
                rounded=true
@@ -14,7 +14,7 @@ Storybook.(
                )>
                <ReactIcons.FiPlus />
              </Button>
-           </Title>
+           </>
          }
          displayName="lorem ipsums"
          data=[|
