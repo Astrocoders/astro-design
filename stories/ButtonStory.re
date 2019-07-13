@@ -7,6 +7,9 @@ Storybook.(
   |> add("danger", () =>
        <Button type_=`danger> {Utils.str("Lorem ipsum")} </Button>
      )
+  |> add("transparent", () =>
+       <Button type_=`transparent> {Utils.str("Lorem ipsum")} </Button>
+     )
   |> add("fullWidth", () =>
        <Button fullWidth=true> {Utils.str("Lorem ipsum")} </Button>
      )

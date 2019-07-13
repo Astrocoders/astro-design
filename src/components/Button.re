@@ -4,20 +4,27 @@ module Styles = {
   let getBackgroundColor = (~type_) =>
     switch (type_) {
     | `secondary => (
-        Theme.Colors.secondary,
-        Theme.Colors.secondaryHover,
-        Theme.Colors.secondaryActive,
+        hex(Theme.Colors.secondary),
+        hex(Theme.Colors.secondaryHover),
+        hex(Theme.Colors.secondaryActive),
       )
     | `danger => (
-        Theme.Colors.error,
-        Theme.Colors.errorHover,
-        Theme.Colors.errorActive,
+        hex(Theme.Colors.error),
+        hex(Theme.Colors.errorHover),
+        hex(Theme.Colors.errorActive),
       )
     | `default => (
-        Theme.Colors.primary,
-        Theme.Colors.primaryHover,
-        Theme.Colors.primaryActive,
+        hex(Theme.Colors.primary),
+        hex(Theme.Colors.primaryHover),
+        hex(Theme.Colors.primaryActive),
       )
+    | `transparent => (transparent, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.1))
+    };
+
+  let getColor = (~type_) =>
+    switch (type_) {
+    | `transparent => hex(Theme.Colors.text)
+    | _ => hex(Theme.Colors.textWhite)
     };
 
   let button = (~type_, ~fullWidth, ~rounded, ~size) => {
@@ -34,16 +41,16 @@ module Styles = {
       borderStyle(`none),
       display(flexBox),
       textDecoration(none),
-      color(hex(Theme.Colors.textWhite)),
-      backgroundColor(hex(backgroundColor_)),
-      hover([backgroundColor(hex(hoverBackgroundColor))]),
-      active([backgroundColor(hex(activeBackgroundColor))]),
+      color(getColor(~type_)),
+      backgroundColor(backgroundColor_),
+      hover([backgroundColor(hoverBackgroundColor)]),
+      active([backgroundColor(activeBackgroundColor)]),
       outlineWidth(px(0)),
       disabled([
         opacity(0.3),
         cursor(`text),
-        hover([backgroundColor(hex(backgroundColor_))]),
-        active([backgroundColor(hex(backgroundColor_))]),
+        hover([backgroundColor(backgroundColor_)]),
+        active([backgroundColor(backgroundColor_)]),
       ]),
       ...Theme.Helpers.fullCenter,
     ];
