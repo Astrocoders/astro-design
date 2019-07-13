@@ -2,16 +2,16 @@ module Styles = {
   open Css;
 
   let title =
-      (~align, ~titleColor, ~titleSize, ~pBottom, ~isUppercase, ~weight) =>
+      (~justify, ~titleColor, ~titleSize, ~pBottom, ~isUppercase, ~weight) =>
     style([
       display(flexBox),
       alignItems(center),
+      justifyContent(justify),
       color(hex(titleColor)),
       fontSize(rem(titleSize)),
       fontWeight(`num(weight)),
       paddingBottom(px(pBottom)),
       textTransform(isUppercase ? uppercase : none),
-      textAlign(align),
       width(auto),
     ]);
 };
@@ -20,7 +20,7 @@ module Styles = {
 let make =
     (
       ~className="",
-      ~align=`center,
+      ~justify=`center,
       ~color=Theme.Colors.secondary,
       ~size=Theme.FontSize.title,
       ~pBottom=Theme.Spacing.baseHalf,
@@ -29,17 +29,16 @@ let make =
       ~children,
     ) =>
   <h2
-    className={
-      className
-      ++ " "
-      ++ Styles.title(
-           ~align,
-           ~titleColor=color,
-           ~pBottom,
-           ~titleSize=size,
-           ~isUppercase,
-           ~weight,
-         )
-    }>
+    className={Css.merge([
+      Styles.title(
+        ~justify,
+        ~titleColor=color,
+        ~pBottom,
+        ~titleSize=size,
+        ~isUppercase,
+        ~weight,
+      ),
+      className,
+    ])}>
     children
   </h2>;

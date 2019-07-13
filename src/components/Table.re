@@ -108,7 +108,7 @@ let make =
   <div className>
     <div className=Styles.header>
       <div className=Styles.title>
-        <Title align=`left size=Theme.FontSize.subtitle pBottom=0>
+        <Title justify=`flexStart size=Theme.FontSize.subtitle pBottom=0>
           {title()}
         </Title>
       </div>
