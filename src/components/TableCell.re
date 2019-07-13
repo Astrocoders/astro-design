@@ -3,7 +3,7 @@ module Style = {
 
   let td = (~isButton) => {
     let rules = [
-      padding2(~v=rem(0.2), ~h=rem(0.0)),
+      padding2(~v=rem(0.4), ~h=rem(0.0)),
       overflow(hidden),
       textOverflow(ellipsis),
       fontSize(rem(0.95)),
