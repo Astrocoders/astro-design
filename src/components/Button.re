@@ -39,7 +39,7 @@ module Styles = {
       fontWeight(`num(400)),
       borderRadius(px(4)),
       borderStyle(`none),
-      display(flexBox),
+      display(inlineFlex),
       textDecoration(none),
       color(getColor(~type_)),
       backgroundColor(backgroundColor_),
@@ -61,7 +61,7 @@ module Styles = {
       width(px(size)),
       boxSizing(borderBox),
       padding(px(0)),
-      display(flexBox),
+      display(inlineFlex),
       alignItems(center),
       justifyContent(center),
     ];

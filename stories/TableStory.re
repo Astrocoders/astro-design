@@ -2,7 +2,7 @@ Storybook.(
   storiesOf("Table", module_)
   |> add("default", () =>
        <Table
-         headers=[|"Name", "Email", "Phone"|]
+         headers=[|"Name", "Email", "Phone", "Actions"|]
          title={() =>
            <>
              {Utils.str("Lorem ipsum")}
@@ -65,6 +65,10 @@ Storybook.(
                {Utils.str(row##email)}
              </TableCell>
              <TableCell> {Utils.str(row##phone)} </TableCell>
+             <TableCell isButton=true>
+               <EditButton />
+               <DeleteButton />
+             </TableCell>
            </TableRow>
          }
        />
