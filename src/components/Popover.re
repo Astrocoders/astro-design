@@ -22,6 +22,7 @@ external make:
               } =>
               React.element,
     ~position: list(string),
+    ~windowBorderPadding: int,
     ~transitionDuration: string,
     ~onClickOutside: unit => unit,
     ~children: React.element
@@ -43,6 +44,7 @@ let makeProps =
            "popoverRect": rect,
          } =>
          React.element,
+      ~windowBorderPadding: int=Theme.Spacing.baseHalf,
       ~position: list(string)=["bottom"],
       ~transitionDuration: string="0",
       ~onClickOutside: unit => unit=_ => (),
@@ -54,6 +56,7 @@ let makeProps =
     ~align,
     ~padding,
     ~content,
+    ~windowBorderPadding,
     ~position,
     ~transitionDuration,
     ~onClickOutside,

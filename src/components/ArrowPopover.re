@@ -62,6 +62,7 @@ let make =
            "popoverRect": Popover.rect,
          } =>
          React.element,
+      ~windowBorderPadding: int=Theme.Spacing.baseHalf,
       ~position: list(string)=["bottom"],
       ~transitionDuration: string="0",
       ~onClickOutside: unit => unit=_ => (),
@@ -86,6 +87,7 @@ let make =
         {content(props)}
       </ArrowContainer>
     }
+    windowBorderPadding
     position
     transitionDuration
     onClickOutside>
