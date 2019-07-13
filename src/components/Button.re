@@ -20,7 +20,7 @@ module Styles = {
       )
     };
 
-  let button = (~type_, ~fullWidth, ~rounded, ~size, ~overridings) => {
+  let button = (~type_, ~fullWidth, ~rounded, ~size) => {
     let (backgroundColor_, hoverBackgroundColor, activeBackgroundColor) =
       getBackgroundColor(~type_);
 
@@ -61,7 +61,6 @@ module Styles = {
 
     [
       rules,
-      overridings,
       fullWidth ? [width(`percent(100.0))] : [],
       rounded ? rulesRounded : [],
     ]
@@ -80,17 +79,14 @@ let make =
       ~rounded=false,
       ~size=35,
       ~onClick=_ => (),
-      ~style=[],
+      ~className="",
       ~children,
     ) =>
   <button
-    className={Styles.button(
-      ~type_,
-      ~fullWidth,
-      ~rounded,
-      ~size,
-      ~overridings=style,
-    )}
+    className={Css.merge([
+      Styles.button(~type_, ~fullWidth, ~rounded, ~size),
+      className,
+    ])}
     onClick
     disabled
     title>

@@ -6,6 +6,14 @@ Storybook.(
          title={
            <Title align=`left size=Theme.FontSize.subtitle pBottom=0>
              {Utils.str("Lorem ipsum")}
+             <Button
+               rounded=true
+               title="Add"
+               className=Css.(
+                 style([marginLeft(px(Theme.Spacing.baseHalf))])
+               )>
+               <ReactIcons.FiPlus />
+             </Button>
            </Title>
          }
          displayName="lorem ipsums"
@@ -52,7 +60,10 @@ Storybook.(
                row##email;
              }>
              <TableCell> {Utils.str(row##name)} </TableCell>
-             <TableCell> {Utils.str(row##email)} </TableCell>
+             <TableCell
+               className=Css.(style([color(hex(Theme.Colors.primary))]))>
+               {Utils.str(row##email)}
+             </TableCell>
              <TableCell> {Utils.str(row##phone)} </TableCell>
            </TableRow>
          }

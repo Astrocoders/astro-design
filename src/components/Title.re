@@ -4,6 +4,8 @@ module Styles = {
   let title =
       (~align, ~titleColor, ~titleSize, ~pBottom, ~isUppercase, ~weight) =>
     style([
+      display(flexBox),
+      alignItems(center),
       color(hex(titleColor)),
       fontSize(rem(titleSize)),
       fontWeight(`num(weight)),

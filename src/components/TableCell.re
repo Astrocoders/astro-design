@@ -13,4 +13,5 @@ module Style = {
 };
 
 [@react.component]
-let make = (~children) => <td className=Style.td> children </td>;
+let make = (~className="", ~children) =>
+  <td className=Css.(merge([Style.td, className]))> children </td>;

@@ -36,7 +36,7 @@ module Styles = {
     style([
       textAlign(`left),
       fontSize(rem(Theme.FontSize.text)),
-      padding2(~v=px(8), ~h=px(0)),
+      padding3(~top=px(8), ~h=px(0), ~bottom=px(Theme.Spacing.baseHalf)),
       color(hex(Theme.Colors.text)),
     ]);
 
@@ -59,6 +59,7 @@ module Styles = {
     ]);
   let rowsSelectOption = style([borderStyle(none)]);
   let display = style([marginRight(px(40))]);
+  let buttonPrevious = style([marginRight(px(Theme.Spacing.baseHalf))]);
 };
 
 type state = {
@@ -80,6 +81,7 @@ let make =
       ~displayName,
       ~renderRow,
       ~loading=false,
+      ~className="",
     ) => {
   let ({page, rows}, dispatch) =
     React.useReducer(
@@ -103,9 +105,13 @@ let make =
       {Utils.str(value)}
     </option>;
 
-  <div>
+  <div className>
     <div className=Styles.header>
-      <div className=Styles.title> title </div>
+      <div className=Styles.title>
+        <Title align=`left size=Theme.FontSize.subtitle pBottom=0>
+          title
+        </Title>
+      </div>
       <div className=Styles.search>
         <ReactIcons.FiSearch />
         <input
@@ -169,7 +175,7 @@ let make =
             title="Previous"
             disabled={displayStart <= 1}
             onClick={_ => dispatch(PreviousPage)}
-            style=[Css.marginRight(Css.px(Theme.Spacing.baseHalf))]>
+            className=Styles.buttonPrevious>
             <ReactIcons.FiChevronLeft />
           </Button>
           <Button
