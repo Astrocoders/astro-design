@@ -4,18 +4,18 @@ type value = {
   "endDate": Js.Date.t,
 };
 
-type state = {value: array(value)};
+type state = {date: array(value)};
 
 type action =
   | UpdateDate(array(value));
 
 [@react.component]
 let make = () => {
-  let ({value}, dispatch) =
+  let ({date}, dispatch) =
     React.useReducer(
       (action) =>
         switch (action) {
-        | UpdateDate(newDates) => {value: newDates}
+        | UpdateDate(newDates) => ReasonReact.Update({date: newDates})
         },
     );
    <DatePicker
