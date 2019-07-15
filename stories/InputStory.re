@@ -1,11 +1,11 @@
 Storybook.(
   storiesOf("Input", module_)
-  |> add("default", () => 
-    <Input name="name" placeholder="Name" required=true />)
-  |> add("half", () => 
-    <Input name="name" placeholder="Name" required=true fullWidth=false/>)
-  |> add("email", () => 
-    <Input name="email" placeholder="Email" required=true />)
-  |> add("number", () => 
-    <Input name="tel" placeholder="Phone" required=true />)
+  |> add("default", () => <Input name="example" label="Example" />)
+  |> add("Dark", () => <Input name="example" label="Example" theme=`dark />)
+  |> add("Error", () =>
+       <Input name="example" label="Example" error="Field is required" />
+     )
+  |> add("Disabled", () =>
+       <Input name="example" label="Example" disabled=true />
+     )
 );

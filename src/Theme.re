@@ -1,3 +1,5 @@
+open Css;
+
 module Colors = {
   let primary = "00B45C";
   let primaryHover = "219653";
@@ -6,6 +8,8 @@ module Colors = {
   let secondary = "262A41";
   let secondaryHover = "22253a";
   let secondaryActive = "1D2033";
+
+  let secondaryLighter = "303348";
 
   let widget = "fff";
   let widgetHover = "f1f1f1";
@@ -19,7 +23,7 @@ module Colors = {
   let background = "f3f3f3";
   let backgroundContrast = "fafafa";
 
-  let border = "C4C4C4";
+  let border = "d2d2d2";
   let link = "42a5f5";
   let default = "888995";
   let success = "00ce69";
@@ -55,6 +59,46 @@ module Helpers = {
   open Css;
   let fullCenter = [alignItems(center), justifyContent(center)];
   let centerBlock = [marginLeft(auto), marginRight(auto)];
+};
+
+module Bases = {
+  let input = (~theme) =>
+    style([
+      padding2(~v=rem(0.75), ~h=rem(0.9)),
+      width(`percent(100.0)),
+      maxWidth(px(700)),
+      boxSizing(borderBox),
+      display(block),
+      fontSize(rem(0.85)),
+      borderRadius(px(Border.default)),
+      color(
+        hex(
+          switch (theme) {
+          | `dark => Colors.textWhite
+          | `light => Colors.text
+          },
+        ),
+      ),
+      border(
+        px(1),
+        solid,
+        hex(
+          switch (theme) {
+          | `dark => Colors.secondaryLighter
+          | `light => Colors.border
+          },
+        ),
+      ),
+      backgroundColor(
+        hex(
+          switch (theme) {
+          | `dark => Colors.secondaryLighter
+          | `light => Colors.widget
+          },
+        ),
+      ),
+      fontFamily("inherit"),
+    ]);
 };
 
 Css.(
