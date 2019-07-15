@@ -1,15 +1,6 @@
 module Styles = {
   open Css;
 
-  let wrapper =
-    style([
-      overflowX(auto),
-      width(`percent(100.0)),
-      boxSizing(borderBox),
-      padding(px(Theme.Spacing.base)),
-      backgroundColor(hex(Theme.Colors.backgroundContrast)),
-    ]);
-
   let header =
     style([
       marginBottom(px(Theme.Spacing.base)),
@@ -25,6 +16,8 @@ module Styles = {
       borderStyle(none),
       backgroundColor(transparent),
     ]);
+
+  let panel = style([overflowX(auto)]);
 
   let table =
     style([
@@ -121,7 +114,7 @@ let make =
         />
       </div>
     </div>
-    <div className=Styles.wrapper>
+    <Panel className=Styles.panel>
       <table className=Styles.table>
         <thead>
           <tr>
@@ -187,6 +180,6 @@ let make =
           </Button>
         </div>
       </div>
-    </div>
+    </Panel>
   </div>;
 };
