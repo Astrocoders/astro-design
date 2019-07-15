@@ -64,8 +64,9 @@ module Helpers = {
 module Bases = {
   let input = (~theme) =>
     style([
-      padding2(~v=rem(0.75), ~h=rem(0.9)),
+      padding2(~v=px(0), ~h=px(12)),
       width(`percent(100.0)),
+      height(px(40)),
       maxWidth(px(700)),
       boxSizing(borderBox),
       display(block),

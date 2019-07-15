@@ -1,3 +1,21 @@
+module Styles = {
+  open Css;
+
+  let specifics = (~type_) => {
+    let rules =
+      switch (type_) {
+      | "color" => [
+          width(px(40)),
+          padding(px(0)),
+          selector("::-webkit-color-swatch", [borderStyle(none)]),
+        ]
+      | _ => []
+      };
+
+    style(rules);
+  };
+};
+
 [@react.component]
 let make =
     (
@@ -21,7 +39,11 @@ let make =
       onChange
       placeholder
       disabled
-      className={Css.merge([Theme.Bases.input(~theme), className])}
+      className={Css.merge([
+        Theme.Bases.input(~theme),
+        Styles.specifics(~type_),
+        className,
+      ])}
     />
     <InputError error />
   </InputWrapper>;
