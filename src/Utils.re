@@ -1,9 +1,12 @@
 open Webapi.Dom;
 
+/* Utils.str */
 let str = React.string;
 
+/* Utils.requireAssetURI */
 [@bs.val] external requireAssetURI: string => string = "require";
 
+/* Utils.useClickOutside */
 let useClickOutside = (onClickOutside: Dom.mouseEvent => unit) => {
   let elementRef = React.useRef(Js.Nullable.null);
 
@@ -31,4 +34,10 @@ let useClickOutside = (onClickOutside: Dom.mouseEvent => unit) => {
   });
 
   elementRef;
+};
+
+/* Utils.Errors */
+module Errors = {
+  let invalid = field => "Invalid " ++ field;
+  let required = "Required field";
 };
