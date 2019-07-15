@@ -20,7 +20,7 @@ module Styles = {
 let make =
     (
       ~className="",
-      ~justify=`center,
+      ~justify=`flexStart,
       ~color=Theme.Colors.secondary,
       ~size=Theme.FontSize.title,
       ~pBottom=Theme.Spacing.baseHalf,
