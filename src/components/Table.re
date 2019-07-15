@@ -37,8 +37,8 @@ module Styles = {
     style([
       display(flexBox),
       alignItems(center),
+      justifyContent(spaceBetween),
       marginTop(px(Theme.Spacing.base)),
-      justifyContent(center),
       fontSize(rem(0.9)),
       color(hex(Theme.Colors.textSecondary)),
     ]);
