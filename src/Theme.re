@@ -7,6 +7,11 @@ module Colors = {
   let secondaryHover = "464C6F";
   let secondaryActive = "1D2033";
 
+  let widget = "fff";
+  let widgetHover = "f1f1f1";
+  let widgetActive = "e1e1e1";
+  let widgetShadow = "ccc";
+
   let text = "262A41";
   let textSecondary = "828282";
   let textWhite = "fff";

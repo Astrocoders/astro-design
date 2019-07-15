@@ -2,11 +2,19 @@ Storybook.(
   storiesOf("Table", module_)
   |> add("default", () =>
        <Table
-         headers=[|"Name", "Email", "Phone"|]
-         title={
-           <Title align=`left size=Theme.FontSize.subtitle pBottom=0>
+         headers=[|"Name", "Email", "Phone", "Actions"|]
+         title={() =>
+           <>
              {Utils.str("Lorem ipsum")}
-           </Title>
+             <Button
+               rounded=true
+               title="Add"
+               className=Css.(
+                 style([marginLeft(px(Theme.Spacing.baseHalf))])
+               )>
+               <ReactIcons.FiPlus />
+             </Button>
+           </>
          }
          displayName="lorem ipsums"
          data=[|
@@ -52,8 +60,15 @@ Storybook.(
                row##email;
              }>
              <TableCell> {Utils.str(row##name)} </TableCell>
-             <TableCell> {Utils.str(row##email)} </TableCell>
+             <TableCell
+               className=Css.(style([color(hex(Theme.Colors.primary))]))>
+               {Utils.str(row##email)}
+             </TableCell>
              <TableCell> {Utils.str(row##phone)} </TableCell>
+             <TableCell isButton=true>
+               <EditButton />
+               <DeleteButton />
+             </TableCell>
            </TableRow>
          }
        />

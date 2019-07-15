@@ -12,8 +12,21 @@ module Styles = {
 };
 
 [@react.component]
-let make = (~className="", ~horizontalAlign=`flexStart, ~verticalAlign=`flexStart, ~width=100., ~children) => {
-  <div className=(className ++ " " ++ {Styles.row(~horizontalAlign, ~verticalAlign, ~colWidth=width)})>
+let make =
+    (
+      ~className="",
+      ~horizontalAlign=`flexStart,
+      ~verticalAlign=`flexStart,
+      ~width=100.,
+      ~onClick=_ => (),
+      ~children,
+    ) => {
+  <div
+    className={Css.merge([
+      Styles.row(~horizontalAlign, ~verticalAlign, ~colWidth=width),
+      className,
+    ])}
+    onClick>
     children
   </div>;
 };
