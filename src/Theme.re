@@ -21,7 +21,7 @@ module Colors = {
   let textWhite = "fff";
 
   let background = "f3f3f3";
-  let backgroundContrast = "fafafa";
+  let backgroundContrast = "efeff0";
 
   let border = "d2d2d2";
   let link = "42a5f5";
