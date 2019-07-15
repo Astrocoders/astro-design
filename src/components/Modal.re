@@ -17,7 +17,7 @@ module Styles = {
       width(px(640)),
       boxSizing(borderBox),
       borderRadius(px(Theme.Border.default)),
-      margin2(~v=px(Theme.Spacing.base4), ~h=auto),
+      margin2(~v=px(Theme.Spacing.base2), ~h=auto),
       backgroundColor(hex(Theme.Colors.secondary)),
     ]);
 

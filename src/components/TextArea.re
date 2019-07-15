@@ -1,19 +1,8 @@
 module Styles = {
   open Css;
 
-  let specifics = (~type_) => {
-    let rules =
-      switch (type_) {
-      | "color" => [
-          width(px(40)),
-          padding(px(0)),
-          selector("::-webkit-color-swatch", [borderStyle(none)]),
-        ]
-      | _ => []
-      };
-
-    style(rules);
-  };
+  let textarea =
+    style([paddingTop(px(12)), paddingBottom(px(12)), height(px(70))]);
 };
 
 [@react.component]
@@ -21,7 +10,6 @@ let make =
     (
       ~name,
       ~label,
-      ~type_="text",
       ~theme=`light,
       ~value="",
       ~className="",
@@ -32,16 +20,15 @@ let make =
     ) =>
   <InputWrapper>
     <InputLabel error> {React.string(label)} </InputLabel>
-    <input
+    <textarea
       name
-      type_
       value
       onChange
       placeholder
       disabled
       className={Css.merge([
         Theme.Bases.input(~theme),
-        Styles.specifics(~type_),
+        Styles.textarea,
         className,
       ])}
     />

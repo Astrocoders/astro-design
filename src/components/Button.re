@@ -21,13 +21,14 @@ module Styles = {
     | `transparent => (transparent, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.1))
     };
 
-  let getColor = (~type_) =>
-    switch (type_) {
-    | `transparent => hex(Theme.Colors.text)
-    | _ => hex(Theme.Colors.textWhite)
+  let getColor = (~text) =>
+    switch (text) {
+    | `text => hex(Theme.Colors.text)
+    | `textSecondary => hex(Theme.Colors.textSecondary)
+    | `default => hex(Theme.Colors.textWhite)
     };
 
-  let button = (~type_, ~fullWidth, ~rounded, ~size) => {
+  let button = (~type_, ~text, ~fullWidth, ~rounded, ~size) => {
     let (backgroundColor_, hoverBackgroundColor, activeBackgroundColor) =
       getBackgroundColor(~type_);
 
@@ -41,7 +42,7 @@ module Styles = {
       borderStyle(`none),
       display(inlineFlex),
       textDecoration(none),
-      color(getColor(~type_)),
+      color(getColor(~text)),
       backgroundColor(backgroundColor_),
       hover([backgroundColor(hoverBackgroundColor)]),
       active([backgroundColor(activeBackgroundColor)]),
@@ -81,6 +82,7 @@ let make =
     (
       ~type_=`default,
       ~fullWidth=false,
+      ~text=`default,
       ~disabled=false,
       ~title="",
       ~rounded=false,
@@ -91,7 +93,7 @@ let make =
     ) =>
   <button
     className={Css.merge([
-      Styles.button(~type_, ~fullWidth, ~rounded, ~size),
+      Styles.button(~type_, ~text, ~fullWidth, ~rounded, ~size),
       className,
     ])}
     onClick
