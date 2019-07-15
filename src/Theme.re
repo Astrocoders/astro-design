@@ -4,7 +4,7 @@ module Colors = {
   let primaryActive = "187740";
 
   let secondary = "262A41";
-  let secondaryHover = "464C6F";
+  let secondaryHover = "22253a";
   let secondaryActive = "1D2033";
 
   let widget = "fff";
