@@ -11,15 +11,21 @@ type action =
 
 [@react.component]
 let make = () => {
-  let ({date}, dispatch) =
-    React.useReducer(
-      (action) =>
-        switch (action) {
-        | UpdateDate(newDates) => ReasonReact.Update({date: newDates})
-        },
+  let (state, send) =
+    ReactUpdate.useReducer({ 
+        date: [|
+          {
+             "initDate": Js.Date.(make()),
+             "endDate": Js.Date.(make())
+           }
+        |]
+      }, (action, state) =>
+      switch (action) {
+      | UpdateDate(newDate) => Update(state)
+      }
     );
    <DatePicker
-      value={self.state.value}
-      onChange={_ => dispatch(UpdateDate(value))}
+      value={state.date}
+      onChange={_ => send(UpdateDate(state.date))}
    />;
 };
