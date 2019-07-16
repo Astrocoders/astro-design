@@ -102,6 +102,8 @@ module Bases = {
     ]);
 };
 
+Css.(global("html, body", [color(hex(Colors.text))]));
+
 Css.(
   global(
     "*",
