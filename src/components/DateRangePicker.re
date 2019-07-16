@@ -1,23 +1,15 @@
-type value = {
-  .
-  "initDate": Js.Date.t,
-  "endDate": Js.Date.t,
-};
-
-type state = {date: array(value)};
+type state = {date: array(Js.Date.t)};
 
 type action =
-  | UpdateDate(array(value));
+  | UpdateDate(array(Js.Date.t));
 
 [@react.component]
 let make = () => {
   let (state, send) =
     ReactUpdate.useReducer({ 
         date: [|
-          {
-             "initDate": Js.Date.(make()),
-             "endDate": Js.Date.(make())
-           }
+          Js.Date.make(),
+          Js.Date.make()
         |]
       }, (action, state) =>
       switch (action) {

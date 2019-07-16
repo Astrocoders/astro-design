@@ -1,0 +1,14 @@
+diff --git a/node_modules/@wojtekmaj/react-daterange-picker/src/DateRangePicker.less b/node_modules/@wojtekmaj/react-daterange-picker/src/DateRangePicker.less
+index e9ef2c8..3248ba1 100644
+--- a/node_modules/@wojtekmaj/react-daterange-picker/src/DateRangePicker.less
++++ b/node_modules/@wojtekmaj/react-daterange-picker/src/DateRangePicker.less
+@@ -14,8 +14,8 @@
+   }
+ 
+   &__wrapper {
++    align-items: center;
+     display: flex;
+-    border: thin solid gray;
+   }
+ 
+   &__inputGroup {
