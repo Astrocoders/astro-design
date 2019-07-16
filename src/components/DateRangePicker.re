@@ -1,19 +1,21 @@
-type state = {date: array(Js.Date.t)};
+type value = (Js.Date.t, Js.Date.t);
+
+type state = {date: value};
 
 type action =
-  | UpdateDate(array(Js.Date.t));
+  | UpdateDate(value);
 
 [@react.component]
 let make = () => {
   let (state, send) =
     ReactUpdate.useReducer({ 
-        date: [|
+        date: (
           Js.Date.make(),
           Js.Date.make()
-        |]
+        )
       }, (action, state) =>
       switch (action) {
-      | UpdateDate(newDate) => Update(state)
+      | UpdateDate(newDate) => Update({date: newDate})
       }
     );
    <DatePicker
