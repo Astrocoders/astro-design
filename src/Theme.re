@@ -15,9 +15,12 @@ module Colors = {
   let widgetHover = "f1f1f1";
   let widgetActive = "e1e1e1";
   let widgetShadow = "ccc";
+  let widgetBorder = "eee";
 
   let text = "262A41";
   let textSecondary = "828282";
+  let textSecondaryHover = "626262";
+  let textSecondaryActive = "424242";
   let textWhite = "fff";
 
   let background = "f3f3f3";
