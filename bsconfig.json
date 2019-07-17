@@ -20,7 +20,8 @@
     "bs-css",
     "bs-react-icons",
     "bs-webapi",
-    "reason-react"
+    "reason-react",
+    "reason-react-update"
   ],
   "refmt": 3
 }
