@@ -8,7 +8,8 @@ module Style = {
       textOverflow(ellipsis),
       fontSize(rem(0.95)),
       color(hex(Theme.Colors.text)),
-      selector(":not(:last-child)", [paddingRight(rem(1.5))]),
+      paddingRight(px(Theme.Spacing.baseHalf)),
+      selector(":first-child", [paddingLeft(px(Theme.Spacing.baseHalf))]),
     ];
     let buttonRules = [width(`percent(1.0)), whiteSpace(nowrap)];
 

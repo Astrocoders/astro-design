@@ -17,7 +17,11 @@ module Styles = {
       backgroundColor(transparent),
     ]);
 
-  let panel = style([overflowX(auto)]);
+  let panel =
+    style([
+      overflowX(auto),
+      padding2(~v=px(Theme.Spacing.base), ~h=px(Theme.Spacing.baseHalf)),
+    ]);
 
   let table =
     style([
@@ -31,6 +35,8 @@ module Styles = {
       fontSize(rem(Theme.FontSize.text)),
       padding3(~top=px(8), ~h=px(0), ~bottom=px(Theme.Spacing.baseHalf)),
       color(hex(Theme.Colors.text)),
+      selector(":first-child", [paddingLeft(px(Theme.Spacing.baseHalf))]),
+      selector(":last-child", [paddingRight(px(Theme.Spacing.baseHalf))]),
     ]);
 
   let pagination =
@@ -41,6 +47,7 @@ module Styles = {
       marginTop(px(Theme.Spacing.base)),
       fontSize(rem(0.9)),
       color(hex(Theme.Colors.textSecondary)),
+      padding2(~v=px(0), ~h=px(Theme.Spacing.baseHalf)),
     ]);
   let buttons = style([display(flexBox), alignItems(center)]);
   let rows = style([marginRight(px(40))]);
