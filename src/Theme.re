@@ -12,8 +12,8 @@ module Colors = {
   let secondaryLighter = "303348";
 
   let widget = "fff";
-  let widgetHover = "f1f1f1";
-  let widgetActive = "e1e1e1";
+  let widgetHover = "f7f7f7";
+  let widgetActive = "f2f2f2";
   let widgetShadow = "ccc";
   let widgetBorder = "eee";
 
