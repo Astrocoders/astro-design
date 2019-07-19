@@ -24,6 +24,10 @@ module.exports = {
         test: /\.(jpe?g|png|svg|woff|woff2|eot|ttf|otf)$/,
         loader: 'file-loader',
       },
+      {
+        test: /\.(css)$/,
+        loader: 'css-loader',
+      },
     ],
   },
   devServer: {
