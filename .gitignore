@@ -15,3 +15,4 @@ yarn-error.log
 
 # Storybook
 storybook-static
+.components

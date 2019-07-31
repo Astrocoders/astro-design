@@ -7,8 +7,8 @@
     "bs:build": "bsb -make-world",
     "bs:watch": "bsb -make-world -clean-world -w",
     "clean": "bsb -clean-world",
-    "storybook:build": "build-storybook -c .storybook -o docs",
-    "storybook:deploy": "storybook-to-ghpages",
+    "storybook:build": "build-storybook -c .storybook -o .components",
+    "storybook:deploy": "storybook-to-ghpages -o .components",
     "storybook:start": "start-storybook --port=7007",
     "postinstall": "patch-package",
     "lint:staged": "lint-staged",
@@ -56,6 +56,18 @@
     "*.re": [
       "refmt --in-place",
       "git add"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   }
 }
