@@ -1,4 +1,1 @@
-ReactDOMRe.renderToElementWithId(
-  <GreetingCover message="Hello World" />,
-  "greeting",
-);
+ReactDOMRe.renderToElementWithId(<SystemHome />, "render");
