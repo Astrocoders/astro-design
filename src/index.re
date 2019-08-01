@@ -1,1 +1,1 @@
-ReactDOMRe.renderToElementWithId(<SystemHome />, "render");
+ReactDOMRe.renderToElementWithId(<SystemApp />, "render");
