@@ -7,13 +7,28 @@ module Styles = {
       flexDirection(row),
       justifyContent(horizontalAlign),
       width(pct(100.)),
-      media("(max-width: 600px)", [flexDirection(columnOnMobile ? column : row)]),
+      media(
+        "(max-width: 600px)",
+        [flexDirection(columnOnMobile ? column : row)],
+      ),
     ]);
 };
 
 [@react.component]
-let make = (~className="", ~horizontalAlign=`flexStart, ~verticalAlign=`flexStart, ~columnOnMobile=true, ~children) => {
-  <div className=(className ++ " " ++ {Styles.row(~horizontalAlign, ~verticalAlign, ~columnOnMobile)})>
+let make =
+    (
+      ~className="",
+      ~horizontalAlign=`flexStart,
+      ~verticalAlign=`stretch,
+      ~columnOnMobile=true,
+      ~children,
+    ) => {
+  <div
+    className={
+      className
+      ++ " "
+      ++ Styles.row(~horizontalAlign, ~verticalAlign, ~columnOnMobile)
+    }>
     children
   </div>;
 };
