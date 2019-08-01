@@ -114,6 +114,7 @@ Css.(
     "*",
     [
       boxSizing(`borderBox),
+      fontFamily("sans-serif"),
       padding(px(0)),
       margin(px(0)),
       outlineWidth(px(0)),
