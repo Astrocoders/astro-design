@@ -1,14 +1,14 @@
 module Styles = {
   open Css;
 
-  let panel =
+  let panel = (~background) =>
     style([
       width(`percent(100.0)),
       boxSizing(borderBox),
       padding(px(Theme.Spacing.base)),
-      backgroundColor(hex(Theme.Colors.backgroundContrast)),
+      backgroundColor(hex(background)),
     ]);
 };
 [@react.component]
-let make = (~className="", ~children) =>
-  <div className={Css.merge([Styles.panel, className])}> children </div>;
+let make = (~className="", ~background=Theme.Colors.backgroundContrast, ~children) =>
+  <div className={Css.merge([Styles.panel(~background), className])}> children </div>;
