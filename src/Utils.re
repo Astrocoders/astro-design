@@ -52,6 +52,16 @@ let groupBy = (type a, items, ~key) => {
   |> Belt.Map.toArray;
 };
 
+/* Utils.formatDate */
+let formatDate = datestring => {
+  let date = Js.Date.fromString(datestring);
+  (date |> Js.Date.getFullYear |> Js.Float.toString)
+  ++ "-"
+  ++ (date |> Js.Date.getMonth |> Js.Float.toString)
+  ++ "-"
+  ++ (date |> Js.Date.getDate |> Js.Float.toString);
+};
+
 /* Utils.Errors */
 module Errors = {
   let invalid = field => "Invalid " ++ field;
