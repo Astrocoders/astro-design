@@ -25,6 +25,7 @@ module Styles = {
     switch (text) {
     | `text => hex(Theme.Colors.text)
     | `textSecondary => hex(Theme.Colors.textSecondary)
+    | `error => hex(Theme.Colors.error)
     | `default => hex(Theme.Colors.textWhite)
     };
 
