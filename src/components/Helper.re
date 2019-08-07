@@ -1,11 +1,14 @@
 [@react.component]
-let make = (~children) =>
+let make = (~children, ~className="") =>
   <div
     className=Css.(
-      style([
-        padding2(~v=px(60), ~h=px(0)),
-        textAlign(center),
-        fontSize(rem(0.95)),
+      merge([
+        style([
+          padding2(~v=px(60), ~h=px(0)),
+          textAlign(center),
+          fontSize(rem(0.95)),
+        ]),
+        className,
       ])
     )>
     children

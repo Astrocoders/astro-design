@@ -25,6 +25,7 @@ module Styles = {
     switch (text) {
     | `text => hex(Theme.Colors.text)
     | `textSecondary => hex(Theme.Colors.textSecondary)
+    | `error => hex(Theme.Colors.error)
     | `default => hex(Theme.Colors.textWhite)
     };
 
@@ -86,6 +87,7 @@ let make =
       ~disabled=false,
       ~title="",
       ~rounded=false,
+      ~loading=false,
       ~size=35,
       ~onClick=_ => (),
       ~className="",
@@ -97,9 +99,9 @@ let make =
       className,
     ])}
     onClick
-    disabled
+    disabled={disabled || loading}
     title>
-    children
+    {loading ? <Spinner /> : children}
   </button>;
 
 let default = make;

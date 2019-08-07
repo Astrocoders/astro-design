@@ -20,6 +20,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@apollo/react-hooks": "^3.0.0",
     "@wojtekmaj/react-daterange-picker": "^2.2.0",
     "bs-css": "^8.0.4",
     "bs-react-icons": "astrocoders/bs-react-icons",
@@ -30,6 +31,8 @@
     "react-dom": "^16.8.1",
     "react-icons": "^3.7.0",
     "react-tiny-popover": "^3.4.2",
+    "reason-apollo": "^0.16.4",
+    "reason-apollo-hooks": "Astrocoders/reason-apollo-hooks#feature/add-refetch",
     "reason-react": ">=0.7.0",
     "reason-react-update": "^0.1.1"
   },
