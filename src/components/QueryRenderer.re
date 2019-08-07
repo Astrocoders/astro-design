@@ -9,7 +9,7 @@ let make =
     ) =>
   switch (result) {
   | NoData =>
-    <Oopsie error={Oopsie.convertError({"error": "Nenhum dado"})} refetch />
+    <Oopsie error={Oopsie.convertError({"message": "Nenhum dado"})} refetch />
   | Error(error) => <Oopsie error={Oopsie.convertError(error)} refetch />
   | Loading => renderLoader()
   | Data(data) => children(data)

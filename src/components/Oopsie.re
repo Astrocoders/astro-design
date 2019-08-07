@@ -24,7 +24,7 @@ let make = (~error=?, ~refetch) =>
     <div className=Styles.description>
       {(
          switch (error) {
-         | Some(error) => error
+         | Some(error) => error##message
          | None => "Descrição do erro não fornecida"
          }
        )
