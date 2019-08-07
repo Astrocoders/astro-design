@@ -11,7 +11,7 @@ module Styles = {
   let retryBtn = style([fontSize(rem(1.5))]);
 };
 
-external convertError: 'a => string = "%identity";
+external convertError: 'a => {.. "message": string} = "%identity";
 
 [@react.component]
 let make = (~error=?, ~refetch) =>
