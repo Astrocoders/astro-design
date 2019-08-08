@@ -12,25 +12,11 @@ module Styles = {
   let retryBtn = style([fontSize(rem(1.5))]);
 };
 
-external convertError: 'a => {.. "message": string} = "%identity";
-
 [@react.component]
-let make = (~error=?, ~refetch) =>
+let make = (~title, ~error="", ~refetch) =>
   <Helper className=Styles.wrapper>
-    <b className=Styles.title>
-      {React.string(
-         {j|Infelizmente, nosso servidor não foi capaz de completar esta operação|j},
-       )}
-    </b>
-    <div className=Styles.description>
-      {(
-         switch (error) {
-         | Some(error) => error##message
-         | None => "Descrição do erro não fornecida"
-         }
-       )
-       |> React.string}
-    </div>
+    <b className=Styles.title> {React.string(title)} </b>
+    <div className=Styles.description> {React.string(error)} </div>
     <Button
       type_=`transparent
       rounded=true
