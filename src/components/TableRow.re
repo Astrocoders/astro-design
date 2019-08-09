@@ -1,10 +1,7 @@
 module Styles = {
   open Css;
 
-  let tr =
-    style([
-      hover([backgroundColor(hex(Theme.Colors.backgroundContrastHover))]),
-    ]);
+  let tr = style([hover([backgroundColor(rgba(0, 0, 0, 0.07))])]);
 };
 
 [@react.component]

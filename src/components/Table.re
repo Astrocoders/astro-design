@@ -29,12 +29,14 @@ module Styles = {
       tableLayout(auto),
       width(`percent(100.0)),
     ]);
-  let th =
+  let th = (~darkMode) =>
     style([
       textAlign(`left),
       fontSize(rem(Theme.FontSize.text)),
       padding3(~top=px(8), ~h=px(0), ~bottom=px(Theme.Spacing.baseHalf)),
-      color(hex(Theme.Colors.text)),
+      color(
+        darkMode ? hex(Theme.Colors.textWhite) : hex(Theme.Colors.text),
+      ),
       selector(":first-child", [paddingLeft(px(Theme.Spacing.baseHalf))]),
       selector(":last-child", [paddingRight(px(Theme.Spacing.baseHalf))]),
     ]);
@@ -80,6 +82,7 @@ let make =
       ~title=() => React.null,
       ~displayName,
       ~renderRow,
+      ~darkMode=false,
       ~loading=false,
       ~className="",
     ) => {
@@ -108,7 +111,13 @@ let make =
   <div className>
     <div className=Styles.header>
       <div className=Styles.title>
-        <Title justify=`flexStart size=Theme.FontSize.subtitle pBottom=0>
+        <Title
+          color={
+            darkMode ? Theme.Colors.backgroundContrast : Theme.Colors.secondary
+          }
+          justify=`flexStart
+          size=Theme.FontSize.subtitle
+          pBottom=0>
           {title()}
         </Title>
       </div>
@@ -121,12 +130,18 @@ let make =
         />
       </div>
     </div>
-    <Panel className=Styles.panel>
+    <Panel
+      background={
+        darkMode ? Theme.Colors.secondary : Theme.Colors.backgroundContrast
+      }
+      className=Styles.panel>
       <table className=Styles.table>
         <thead>
           <tr>
             {Belt.Array.map(headers, header =>
-               <th className=Styles.th key=header> {Utils.str(header)} </th>
+               <th className={Styles.th(~darkMode)} key=header>
+                 {Utils.str(header)}
+               </th>
              )
              |> React.array}
           </tr>

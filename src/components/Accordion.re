@@ -14,12 +14,12 @@ module Styles = {
 
     let openRules = [
       boxShadow(
-          ~x=px(1),
-          ~y=px(1),
-          ~blur=px(2),
-          ~spread=px(1),
-          rgba(0,0,0,0.6),
-        ),
+        ~x=px(1),
+        ~y=px(1),
+        ~blur=px(20),
+        ~spread=px(1),
+        rgba(0, 0, 0, 0.08),
+      ),
     ];
 
     [rules, open_ ? openRules : []]->List.concat->style;
@@ -50,7 +50,14 @@ type action =
 let str = React.string;
 
 [@react.component]
-let make = (~title, ~auxTitle="", ~className="", ~background=Theme.Colors.backgroundContrast, ~children) => {
+let make =
+    (
+      ~title,
+      ~auxTitle="",
+      ~className="",
+      ~background=Theme.Colors.backgroundContrast,
+      ~children,
+    ) => {
   let ({open_}, dispatch) =
     React.useReducer(
       (state, action) =>
@@ -61,7 +68,9 @@ let make = (~title, ~auxTitle="", ~className="", ~background=Theme.Colors.backgr
     );
 
   <div className=Css.(merge([Styles.wrapper, className]))>
-    <div className={Styles.header(~background, open_)} onClick={_ => dispatch(Toggle)}>
+    <div
+      className={Styles.header(~background, open_)}
+      onClick={_ => dispatch(Toggle)}>
       <ReactIcons.FiChevronRight className={Styles.chevron(open_)} />
       <div className=Styles.title> {str(title)} </div>
       <div className=Styles.auxTitle> {str(auxTitle)} </div>

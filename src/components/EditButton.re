@@ -1,5 +1,5 @@
 [@react.component]
-let make = (~className="", ~onClick=_ => ()) =>
+let make = (~color="inherit", ~className="", ~onClick=_ => ()) =>
   <Button
     rounded=true
     type_=`transparent
@@ -8,5 +8,5 @@ let make = (~className="", ~onClick=_ => ()) =>
     onClick
     className
     size=28>
-    <ReactIcons.FiEdit />
+    <ReactIcons.FiEdit color />
   </Button>;

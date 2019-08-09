@@ -7,7 +7,6 @@ module Style = {
       overflow(hidden),
       textOverflow(ellipsis),
       fontSize(rem(0.95)),
-      color(hex(Theme.Colors.text)),
       paddingRight(px(Theme.Spacing.baseHalf)),
       selector(":first-child", [paddingLeft(px(Theme.Spacing.baseHalf))]),
     ];
