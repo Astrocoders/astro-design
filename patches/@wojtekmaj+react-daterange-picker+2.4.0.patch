@@ -1,5 +1,5 @@
 diff --git a/node_modules/@wojtekmaj/react-daterange-picker/src/DateRangePicker.less b/node_modules/@wojtekmaj/react-daterange-picker/src/DateRangePicker.less
-index e9ef2c8..3248ba1 100644
+index eb29099..02b7593 100644
 --- a/node_modules/@wojtekmaj/react-daterange-picker/src/DateRangePicker.less
 +++ b/node_modules/@wojtekmaj/react-daterange-picker/src/DateRangePicker.less
 @@ -14,8 +14,8 @@

@@ -20,6 +20,8 @@
     "bs-css",
     "bs-react-icons",
     "bs-webapi",
+    "reason-apollo-hooks",
+    "reason-apollo",
     "reason-react",
     "reason-react-update"
   ],

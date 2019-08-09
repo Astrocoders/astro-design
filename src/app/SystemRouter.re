@@ -8,6 +8,7 @@ let routeFromPath = (url: ReasonReactRouter.url) =>
   | [] => Home
   | ["getting-started"] => GettingStarted
   | ["components"] => Components
+  | _ => Home
   };
 let routeToPath = (route: route) =>
   switch (route) {
