@@ -23,7 +23,7 @@ let make = (~title, ~error="", ~refetch) =>
       text=`error
       size=60
       className=Styles.retryBtn
-      onClick={_ => refetch(None) |> ignore}>
+      onClick={_ => refetch() |> ignore}>
       <ReactIcons.FiRefreshCw />
     </Button>
   </Helper>;
