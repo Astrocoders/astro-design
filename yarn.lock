@@ -8174,9 +8174,10 @@ readdirp@^2.2.1:
     micromatch "^3.1.10"
     readable-stream "^2.0.2"
 
-reason-apollo-hooks@astrocoders/reason-apollo-hooks#feature/improve-refetch:
-  version "2.3.0"
-  resolved "https://codeload.github.com/astrocoders/reason-apollo-hooks/tar.gz/48f65ae114dce0e4e8d2206463093226dfeff197"
+reason-apollo-hooks@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/reason-apollo-hooks/-/reason-apollo-hooks-2.3.1.tgz#e0033d367eb5cbe49fc750dd98334b6b9474de91"
+  integrity sha512-axw90zDb4fNVC5mAEDN68g6RUHmpgAJQ3nBtjJ+WIQA/ag4EptumKr7FJG96/CgzNm5EJv5x8cAaqXkr+bjYdw==
 
 reason-apollo@^0.16.4:
   version "0.16.4"
