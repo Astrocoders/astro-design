@@ -13,7 +13,8 @@ module Styles = {
 };
 
 [@react.component]
-let make = (~title, ~error="", ~refetch) =>
+let make =
+    (~title, ~error="", ~refetch: ReasonApolloHooks.Query.refetch('a), ()) =>
   <Helper className=Styles.wrapper>
     <b className=Styles.title> {React.string(title)} </b>
     <div className=Styles.description> {React.string(error)} </div>
@@ -23,7 +24,7 @@ let make = (~title, ~error="", ~refetch) =>
       text=`error
       size=60
       className=Styles.retryBtn
-      onClick={_ => refetch(None) |> ignore}>
+      onClick={_ => refetch() |> ignore}>
       <ReactIcons.FiRefreshCw />
     </Button>
   </Helper>;
