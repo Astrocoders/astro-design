@@ -7,6 +7,7 @@ let make =
       ~oopsieNoDataMessage,
       ~renderLoader=() => <Helper> <Spinner /> </Helper>,
       ~children,
+      (),
     ) =>
   switch (result) {
   | NoData => <Oopsie title=oopsieTitle error=oopsieNoDataMessage refetch />
