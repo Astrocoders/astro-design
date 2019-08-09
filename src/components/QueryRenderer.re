@@ -2,7 +2,7 @@
 let make =
     (
       ~result: ReasonApolloHooks.Query.variant('a),
-      ~refetch,
+      ~refetch: ReasonApolloHooks.Query.refetch('a),
       ~oopsieTitle,
       ~oopsieNoDataMessage,
       ~renderLoader=() => <Helper> <Spinner /> </Helper>,

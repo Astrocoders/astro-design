@@ -13,7 +13,8 @@ module Styles = {
 };
 
 [@react.component]
-let make = (~title, ~error="", ~refetch, ()) =>
+let make =
+    (~title, ~error="", ~refetch: ReasonApolloHooks.Query.refetch('a), ()) =>
   <Helper className=Styles.wrapper>
     <b className=Styles.title> {React.string(title)} </b>
     <div className=Styles.description> {React.string(error)} </div>
