@@ -1,4 +1,5 @@
 import './AccordionStory.bs'
+import './BoxStory.bs'
 import './ButtonStory.bs'
 import './FieldsStory.bs'
 import './PopoverStory.bs'
