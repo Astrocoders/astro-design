@@ -21,6 +21,7 @@ module Styles = {
       overflow(hidden),
       color(hex(Theme.Colors.textWhite)),
       backgroundColor(hex(getBackgroundColor(~type_))),
+      width(`percent(100.)),
     ]);
 
   let icon =
