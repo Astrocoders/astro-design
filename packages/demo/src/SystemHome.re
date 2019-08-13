@@ -1,3 +1,5 @@
+open AstroDesign;
+
 module Styles = {
   open Css;
 

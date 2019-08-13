@@ -10,5 +10,8 @@ module Styles = {
     ]);
 };
 [@react.component]
-let make = (~className="", ~background=Theme.Colors.backgroundContrast, ~children) =>
-  <div className={Css.merge([Styles.panel(~background), className])}> children </div>;
+let make =
+    (~className="", ~background=Theme.Colors.backgroundContrast, ~children) =>
+  <div className={Css.merge([Styles.panel(~background), className])}>
+    children
+  </div>;

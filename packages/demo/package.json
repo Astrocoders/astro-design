@@ -1,0 +1,61 @@
+{
+  "name": "demo",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "bs:build": "bsb -make-world",
+    "bs:watch": "bsb -make-world -clean-world -w",
+    "clean": "bsb -clean-world",
+    "lint:staged": "lint-staged",
+    "test": "yarn bs:build && react-scripts test --env=jsdom"
+  },
+  "keywords": [
+    "BuckleScript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "astro-design": "0.1.0",
+    "bs-css": "^8.0.4",
+    "bs-react-icons": "astrocoders/bs-react-icons",
+    "postinstall-postinstall": "^2.0.0",
+    "react": "^16.8.1",
+    "react-css-loaders": "^0.0.5",
+    "react-dom": "^16.8.1",
+    "react-icons": "^3.7.0",
+    "reason-react": ">=0.7.0",
+    "reason-react-update": "^0.1.1"
+  },
+  "devDependencies": {
+    "bs-platform": "^5.0.4",
+    "html-webpack-plugin": "^3.2.0",
+    "lint-staged": "^9.2.1",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.18.2",
+    "react-scripts": "^3.0.1"
+  },
+  "pre-commit": "lint:staged",
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --single-quote true --trailing-comma all --print-width 120 --semi false",
+      "git add"
+    ],
+    "*.re": [
+      "refmt --in-place",
+      "git add"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

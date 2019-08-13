@@ -1,3 +1,5 @@
+open AstroDesign;
+
 [@react.component]
 let make = () =>
   <SystemLayout

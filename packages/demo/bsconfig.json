@@ -1,0 +1,26 @@
+
+{
+  "name": "demo",
+  "reason": {
+    "react-jsx": 3
+  },
+  "sources": [{
+    "dir" : "src",
+    "subdirs" : true
+  }],
+  "package-specs": [{
+    "module": "es6",
+    "in-source": true
+  }],
+  "suffix": ".bs.js",
+  "namespace": true,
+  "bs-dependencies": [
+    "astro-design",
+    "bs-css",
+    "bs-react-icons",
+    "bs-webapi",
+    "reason-react",
+    "reason-react-update"
+  ],
+  "refmt": 3
+}

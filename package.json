@@ -1,76 +1,54 @@
 {
-  "name": "astro-design",
-  "version": "0.1.0",
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "bs:build": "bsb -make-world",
-    "bs:watch": "bsb -make-world -clean-world -w",
-    "clean": "bsb -clean-world",
-    "storybook:build": "build-storybook -c .storybook -o .components",
-    "storybook:deploy": "storybook-to-ghpages -o .components",
-    "storybook:start": "start-storybook --port=7007",
-    "postinstall": "patch-package",
-    "lint:staged": "lint-staged",
-    "test": "yarn bs:build && react-scripts test --env=jsdom"
-  },
+  "name": "@astrocoders/design",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Components set of Astrocoders",
+  "repository": "git@github.com:Astrocoders/astro-design.git",
+  "homepage": "https://github.com/Astrocoders/astro-design#readme",
+  "bugs": "https://github.com/Astrocoders/astro-design/issues",
   "keywords": [
-    "BuckleScript"
+    "reason",
+    "bucklescript",
+    "react",
+    "ui"
   ],
-  "author": "",
+  "author": "Astrocoders <contact@astrocoders.com>",
   "license": "MIT",
   "dependencies": {
-    "@apollo/react-hooks": "^3.0.0",
-    "@wojtekmaj/react-daterange-picker": "^2.2.0",
-    "bs-css": "^8.0.4",
-    "bs-react-icons": "astrocoders/bs-react-icons",
-    "bs-webapi": "^0.15.2",
     "patch-package": "^6.1.2",
-    "postinstall-postinstall": "^2.0.0",
-    "react": "^16.8.1",
-    "react-css-loaders": "^0.0.5",
-    "react-dom": "^16.8.1",
-    "react-icons": "^3.7.0",
-    "react-tiny-popover": "^3.4.2",
-    "reason-apollo": "^0.16.4",
-    "reason-apollo-hooks": "2.3.0",
-    "reason-react": ">=0.7.0",
-    "reason-react-update": "^0.1.1"
+    "postinstall-postinstall": "^2.0.0"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "5.2.0-beta.17",
-    "@storybook/addon-info": "5.2.0-beta.17",
-    "@storybook/addon-links": "5.2.0-beta.17",
-    "@storybook/react": "5.2.0-beta.17",
-    "@storybook/storybook-deployer": "^2.8.1",
-    "bs-platform": "^5.0.4",
-    "html-webpack-plugin": "^3.2.0",
-    "lint-staged": "^9.2.1",
-    "pre-commit": "^1.2.2",
-    "prettier": "^1.18.2",
-    "react-scripts": "^3.0.1"
+    "lerna": "^3.14.1",
+    "lint-staged": "^7.0.0",
+    "pre-commit": "^1.2.2"
+  },
+  "lint-staged": {
+    "*.re": [
+      "bsrefmt --in-place",
+      "git add"
+    ]
   },
   "pre-commit": "lint:staged",
-  "lint-staged": {
-    "*.js": [
-      "prettier --write --single-quote true --trailing-comma all --print-width 120 --semi false",
-      "git add"
+  "workspaces": {
+    "packages": [
+      "packages/*"
     ],
-    "*.re": [
-      "refmt --in-place",
-      "git add"
+    "nohoist": [
+      "**/graphql_ppx",
+      "**/graphql_ppx/**",
+      "**/lenses_ppx",
+      "**/lenses_ppx/**"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "scripts": {
+    "start": "yarn bs:watch",
+    "test": "yarn bs:build",
+    "bs:build": "lerna run bs:build",
+    "bs:watch": "lerna run bs:watch",
+    "clean": "lerna run clean",
+    "lint:staged": "lint-staged",
+    "bs:setup": "bsb -make-world",
+    "postinstall": "patch-package"
   }
 }
