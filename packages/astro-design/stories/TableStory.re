@@ -76,7 +76,7 @@ Storybook.(
   |> add("dark mode", () =>
        <Table
          headers=[|"Name", "Email", "Phone", "Actions"|]
-         darkMode=true
+         theme=`dark
          title={() =>
            <>
              {Utils.str("Lorem ipsum")}

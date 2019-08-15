@@ -3,9 +3,24 @@ module Styles = {
 
   let wrapper = style([marginBottom(px(Theme.Spacing.base))]);
 
-  let header = (~background, open_) => {
+  let header = (~theme, open_) => {
     let rules = [
-      backgroundColor(hex(background)),
+      color(
+        hex(
+          switch (theme) {
+          | `dark => Theme.Colors.textWhite
+          | `light => Theme.Colors.text
+          },
+        ),
+      ),
+      backgroundColor(
+        hex(
+          switch (theme) {
+          | `dark => Theme.Colors.secondary
+          | `light => Theme.Colors.backgroundContrast
+          },
+        ),
+      ),
       padding(px(Theme.Spacing.baseHalf)),
       display(flexBox),
       alignItems(center),
@@ -50,14 +65,7 @@ type action =
 let str = React.string;
 
 [@react.component]
-let make =
-    (
-      ~title,
-      ~auxTitle="",
-      ~className="",
-      ~background=Theme.Colors.backgroundContrast,
-      ~children,
-    ) => {
+let make = (~title, ~auxTitle="", ~className="", ~theme=`light, ~children) => {
   let ({open_}, dispatch) =
     React.useReducer(
       (state, action) =>
@@ -69,7 +77,7 @@ let make =
 
   <div className=Css.(merge([Styles.wrapper, className]))>
     <div
-      className={Styles.header(~background, open_)}
+      className={Styles.header(~theme, open_)}
       onClick={_ => dispatch(Toggle)}>
       <ReactIcons.FiChevronRight className={Styles.chevron(open_)} />
       <div className=Styles.title> {str(title)} </div>

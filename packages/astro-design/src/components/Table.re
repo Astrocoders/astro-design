@@ -29,13 +29,18 @@ module Styles = {
       tableLayout(auto),
       width(`percent(100.0)),
     ]);
-  let th = (~darkMode) =>
+  let th = (~theme) =>
     style([
       textAlign(`left),
       fontSize(rem(Theme.FontSize.text)),
       padding3(~top=px(8), ~h=px(0), ~bottom=px(Theme.Spacing.baseHalf)),
       color(
-        darkMode ? hex(Theme.Colors.textWhite) : hex(Theme.Colors.text),
+        hex(
+          switch (theme) {
+          | `dark => Theme.Colors.textWhite
+          | `light => Theme.Colors.text
+          },
+        ),
       ),
       selector(":first-child", [paddingLeft(px(Theme.Spacing.baseHalf))]),
       selector(":last-child", [paddingRight(px(Theme.Spacing.baseHalf))]),
@@ -62,6 +67,18 @@ module Styles = {
   let rowsSelectOption = style([borderStyle(none)]);
   let display = style([marginRight(px(40))]);
   let buttonPrevious = style([marginRight(px(Theme.Spacing.baseHalf))]);
+
+  let tableText = (~theme) =>
+    style([
+      color(
+        hex(
+          switch (theme) {
+          | `dark => Theme.Colors.textWhite
+          | `light => Theme.Colors.text
+          },
+        ),
+      ),
+    ]);
 };
 
 type state = {
@@ -82,7 +99,7 @@ let make =
       ~title=() => React.null,
       ~displayName,
       ~renderRow,
-      ~darkMode=false,
+      ~theme=`light,
       ~loading=false,
       ~className="",
     ) => {
@@ -113,7 +130,10 @@ let make =
       <div className=Styles.title>
         <Title
           color={
-            darkMode ? Theme.Colors.backgroundContrast : Theme.Colors.secondary
+            switch (theme) {
+            | `dark => Theme.Colors.textWhite
+            | `light => Theme.Colors.text
+            }
           }
           justify=`flexStart
           size=Theme.FontSize.subtitle
@@ -130,25 +150,21 @@ let make =
         />
       </div>
     </div>
-    <Panel
-      background={
-        darkMode ? Theme.Colors.secondary : Theme.Colors.backgroundContrast
-      }
-      className=Styles.panel>
+    <Panel theme className=Styles.panel>
       <table className=Styles.table>
         <thead>
           <tr>
             {Belt.Array.map(headers, header =>
-               <th className={Styles.th(~darkMode)} key=header>
+               <th className={Styles.th(~theme)} key=header>
                  {Utils.str(header)}
                </th>
              )
              |> React.array}
           </tr>
         </thead>
-        <tbody>
+        <tbody className={Styles.tableText(~theme)}>
           {loading
-             ? helper(<Loading />)
+             ? helper(<Loading theme />)
              : totalCount === 0
                  ? helper(Utils.str("No entries")) : React.null}
           {Belt.Array.map(
@@ -160,9 +176,14 @@ let make =
       </table>
       <div className=Styles.pagination>
         <div className=Styles.rows>
-          <span> {Utils.str("Rows per page:")} </span>
+          <span className={Styles.tableText(~theme)}>
+            {Utils.str("Rows per page:")}
+          </span>
           <select
-            className=Styles.rowsSelect
+            className={Css.merge([
+              Styles.tableText(~theme),
+              Styles.rowsSelect,
+            ])}
             value={string_of_int(rows)}
             onChange={e =>
               dispatch(ChangeNumberOfRows(e->ReactEvent.Form.target##value))
@@ -174,7 +195,8 @@ let make =
             {option("100")}
           </select>
         </div>
-        <div className=Styles.display>
+        <div
+          className={Css.merge([Styles.tableText(~theme), Styles.display])}>
           {Utils.str(
              "Showing "
              ++ string_of_int(displayStart)
