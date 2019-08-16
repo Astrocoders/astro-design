@@ -17,8 +17,7 @@ module Styles = {
   let navigation =
     style([
       padding(px(Theme.Spacing.base)),
-      width(px(300)),
-      media("(max-width: 600px)", [width(pct(100.))]),
+      media("(min-width: 960px)", [width(px(300))]),
     ]);
 
   let content = (~withPadding) =>
@@ -30,23 +29,20 @@ module Styles = {
       media("(max-width: 600px)", [paddingTop(px(Theme.Spacing.base))]),
     ]);
 
-  let menu =
+  let menu = (~theme) =>
     style([
       flexDirection(column),
       marginTop(px(Theme.Spacing.base)),
-      media("(max-width: 600px)", [display(none)]),
+      ...Theme.Helpers.color(theme),
     ]);
 };
 
 [@react.component]
-let make = (~menu, ~content, ~withPadding=true) =>
+let make = (~menu, ~content, ~theme, ~withPadding=true) =>
   <div className=Styles.wrapper>
-    <Col className=Styles.navigation>
-      <Title justify=`center color=Theme.Colors.textWhite>
-        {Utils.str("AstroDesign")}
-      </Title>
-      <div className=Styles.menu> menu </div>
-    </Col>
-    <Divider />
+    <Drawer title="AstroDesign" theme className=Styles.navigation>
+      <div className={Styles.menu(~theme)}> menu </div>
+    </Drawer>
+    <Divider hideOnMobile=false />
     <Col className={Styles.content(~withPadding)}> content </Col>
   </div>;
