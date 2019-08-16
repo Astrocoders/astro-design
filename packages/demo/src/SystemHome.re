@@ -24,11 +24,13 @@ module Styles = {
 };
 
 [@react.component]
-let make = () =>
+let make = (~theme) =>
   <SystemLayout
+    theme
     menu=
       <>
         <MenuItem
+          theme
           icon={<ReactIcons.FiHome color="inherit" />}
           text="Home"
           onClick={_ =>
@@ -36,6 +38,7 @@ let make = () =>
           }
         />
         <MenuItem
+          theme
           icon={<ReactIcons.FiFlag color="inherit" />}
           text="Getting Started"
           onClick={_ =>
@@ -43,6 +46,7 @@ let make = () =>
           }
         />
         <MenuItem
+          theme
           icon={<ReactIcons.FiBox color="inherit" />}
           text="Components"
           onClick={_ =>
@@ -57,10 +61,10 @@ let make = () =>
           className=Styles.title
           justify=`center
           size=Theme.FontSize.title
-          color=Theme.Colors.textWhite>
+          color="inherit">
           {Utils.str("Outerspace components for complex apps")}
         </Title>
-        <Text align=`center color=Theme.Colors.textWhite>
+        <Text align=`center color="inherit">
           {Utils.str(
              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec magna nisi, convallis vel consectetur sit amet, sagittis vitae diam. Vestibulum eget pretium elit, sit amet venenatis ante. In sit amet magna vel turpis hendrerit auctor quis quis magna. Pellentesque odio turpis, mollis at elit non, interdum congue elit.",
            )}

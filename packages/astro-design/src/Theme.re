@@ -64,6 +64,26 @@ module Helpers = {
   open Css;
   let fullCenter = [alignItems(center), justifyContent(center)];
   let centerBlock = [marginLeft(auto), marginRight(auto)];
+  let color = (~theme) => [
+    color(
+      hex(
+        switch (theme) {
+        | `dark => Colors.textWhite
+        | `light => Colors.text
+        },
+      ),
+    ),
+  ];
+  let background = (~theme) => [
+    backgroundColor(
+      hex(
+        switch (theme) {
+        | `dark => Colors.secondary
+        | `light => Colors.background
+        },
+      ),
+    ),
+  ];
 };
 
 module Bases = {

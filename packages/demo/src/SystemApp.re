@@ -1,11 +1,11 @@
 [@react.component]
-let make = () => {
+let make = (~theme=`light) => {
   <div>
     {switch (SystemRouter.routeFromPath(ReasonReactRouter.useUrl())) {
-     | Home => <SystemHome />
-     | GettingStarted => <SystemGettingStarted />
-     | Components => <SystemComponents />
-     | _ => <SystemHome />
+     | Home => <SystemHome theme />
+     | GettingStarted => <SystemGettingStarted theme />
+     | Components => <SystemComponents theme />
+     | _ => <SystemHome theme />
      }}
   </div>;
 };

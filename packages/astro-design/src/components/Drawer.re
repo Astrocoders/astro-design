@@ -74,14 +74,6 @@ module Styles = {
 
   let sidebar = (~theme, ~isOpen) =>
     style([
-      backgroundColor(
-        hex(
-          switch (theme) {
-          | `dark => Theme.Colors.secondary
-          | `light => Theme.Colors.backgroundContrast
-          },
-        ),
-      ),
       color(
         hex(
           switch (theme) {
@@ -102,6 +94,7 @@ module Styles = {
       ),
       unsafe("transition", "transform 450ms cubic-bezier(0.23, 1, 0.32, 1)"),
       zIndex(2),
+      ...Theme.Helpers.background(theme),
     ]);
   let backButton =
     style([

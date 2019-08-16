@@ -1,11 +1,18 @@
 module Styles = {
   open Css;
 
-  let menuItem = (~isActive) =>
+  let menuItem = (~isActive, ~theme) =>
     style([
       alignItems(center),
       color(
-        isActive ? hex(Theme.Colors.primary) : hex(Theme.Colors.textWhite),
+        isActive
+          ? hex(Theme.Colors.primary)
+          : hex(
+              switch (theme) {
+              | `dark => Theme.Colors.textWhite
+              | `light => Theme.Colors.text
+              },
+            ),
       ),
       cursor(`pointer),
       display(flexBox),
@@ -15,8 +22,8 @@ module Styles = {
 };
 
 [@react.component]
-let make = (~icon, ~text, ~onClick, ~isActive=false) =>
-  <div onClick className={Styles.menuItem(~isActive)}>
+let make = (~icon, ~text, ~onClick, ~isActive=false, ~theme) =>
+  <div onClick className={Styles.menuItem(~isActive, ~theme)}>
     icon
     <Separator size=10 horizontal=true />
     <span> {Utils.str(text)} </span>

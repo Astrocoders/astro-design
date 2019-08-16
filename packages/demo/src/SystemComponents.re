@@ -1,304 +1,118 @@
 open AstroDesign;
 
 [@react.component]
-let make = () =>
+let make = (~theme) =>
   <SystemLayout
+    theme
     menu=
       <>
         <MenuItem
-          icon={<ReactIcons.FiHome color=Theme.Colors.textWhite />}
+          theme
+          icon={<ReactIcons.FiHome color="inherit" />}
           text="Home"
           onClick={_ =>
             ReasonReactRouter.push(SystemRouter.routeToPath(Home))
           }
         />
         <MenuItem
+          theme
           isActive=true
-          icon={<ReactIcons.FiFlag color=Theme.Colors.textWhite />}
+          icon={<ReactIcons.FiFlag color="inherit" />}
           text="Getting Started"
           onClick={_ =>
             ReasonReactRouter.push(SystemRouter.routeToPath(GettingStarted))
           }
         />
         <MenuItem
-          icon={<ReactIcons.FiBox color=Theme.Colors.textWhite />}
+          theme
+          icon={<ReactIcons.FiBox color="inherit" />}
           text="Components"
           onClick={_ =>
             ReasonReactRouter.push(SystemRouter.routeToPath(Home))
           }
         />
-        <SubmenuItem text="Accordion" link="#accordion" />
-        <SubmenuItem text="Blockquote" link="#blockquore" />
-        <SubmenuItem text="Buttons" link="#buttons" />
-        <SubmenuItem text="DatePicker" link="#datepicker" />
-        <SubmenuItem text="Fields" link="#fields" />
-        <SubmenuItem text="Popover" link="#popover" />
-        <SubmenuItem text="Positioning" link="#positioning" />
-        <SubmenuItem text="Spinner" link="#spinner" />
-        <SubmenuItem text="Table" link="#table" />
-        <SubmenuItem text="Text" link="#text" />
-        <SubmenuItem text="Title" link="#title" />
+        <SubmenuItem theme text="Accordion" link="#accordion" />
+        <SubmenuItem theme text="Blockquote" link="#blockquore" />
+        <SubmenuItem theme text="Button" link="#button" />
+        <SubmenuItem theme text="DatePicker" link="#datepicker" />
+        <SubmenuItem theme text="Fields" link="#fields" />
+        <SubmenuItem theme text="Popover" link="#popover" />
+        <SubmenuItem theme text="Positioning" link="#positioning" />
+        <SubmenuItem theme text="Spinner" link="#spinner" />
+        <SubmenuItem theme text="Table" link="#table" />
+        <SubmenuItem theme text="Text" link="#text" />
+        <SubmenuItem theme text="Title" link="#title" />
       </>
     content=
       <>
-        <Title size=Theme.FontSize.title color=Theme.Colors.textWhite>
+        <Title size=Theme.FontSize.title color="inherit">
           {Utils.str("Components")}
         </Title>
-        <Separator size=Theme.Spacing.base2 />
-        <section id="accordion">
-          <Title size=Theme.FontSize.subtitle color=Theme.Colors.textWhite>
-            {Utils.str("Accordion")}
-          </Title>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Concept")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str(
-               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-             )}
-          </Text>
-          <Separator />
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Usage")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str(
-               "Frequently Asked Questions, Features Explanations, Lorem Ipsum",
-             )}
-          </Text>
-          <Button> {Utils.str("See it Alive")} </Button>
-        </section>
-        <Separator size=Theme.Spacing.base2 />
-        <section id="blockquote">
-          <Title size=Theme.FontSize.subtitle color=Theme.Colors.textWhite>
-            {Utils.str("Blockquote")}
-          </Title>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Concept")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str(
-               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-             )}
-          </Text>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Usage")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str("Featured phrases, quotations, etc")}
-          </Text>
-          <Button> {Utils.str("See it Alive")} </Button>
-        </section>
-        <Separator size=Theme.Spacing.base2 />
-        <section id="buttons">
-          <Title size=Theme.FontSize.subtitle color=Theme.Colors.textWhite>
-            {Utils.str("Buttons")}
-          </Title>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Concept")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str(
-               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-             )}
-          </Text>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Usage")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str("Featured phrases, quotations, etc")}
-          </Text>
-          <Button> {Utils.str("See it Alive")} </Button>
-        </section>
-        <Separator size=Theme.Spacing.base2 />
-        <section id="datepicker">
-          <Title size=Theme.FontSize.subtitle color=Theme.Colors.textWhite>
-            {Utils.str("Date Picker")}
-          </Title>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Concept")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str(
-               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-             )}
-          </Text>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Usage")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str("Featured phrases, quotations, etc")}
-          </Text>
-          <Button> {Utils.str("See it Alive")} </Button>
-        </section>
-        <Separator size=Theme.Spacing.base2 />
-        <section id="fields">
-          <Title size=Theme.FontSize.subtitle color=Theme.Colors.textWhite>
-            {Utils.str("Fields")}
-          </Title>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Concept")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str(
-               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-             )}
-          </Text>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Usage")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str("Featured phrases, quotations, etc")}
-          </Text>
-          <Button> {Utils.str("See it Alive")} </Button>
-        </section>
-        <Separator size=Theme.Spacing.base2 />
-        <section id="popover">
-          <Title size=Theme.FontSize.subtitle color=Theme.Colors.textWhite>
-            {Utils.str("Popover")}
-          </Title>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Concept")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str(
-               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-             )}
-          </Text>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Usage")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str("Featured phrases, quotations, etc")}
-          </Text>
-          <Button> {Utils.str("See it Alive")} </Button>
-        </section>
-        <Separator size=Theme.Spacing.base2 />
-        <section id="positioning">
-          <Title size=Theme.FontSize.subtitle color=Theme.Colors.textWhite>
-            {Utils.str("Positioning")}
-          </Title>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Concept")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str(
-               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-             )}
-          </Text>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Usage")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str("Featured phrases, quotations, etc")}
-          </Text>
-          <Button> {Utils.str("See it Alive")} </Button>
-        </section>
-        <Separator size=Theme.Spacing.base2 />
-        <section id="spinner">
-          <Title size=Theme.FontSize.subtitle color=Theme.Colors.textWhite>
-            {Utils.str("Spinner")}
-          </Title>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Concept")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str(
-               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-             )}
-          </Text>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Usage")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str("Featured phrases, quotations, etc")}
-          </Text>
-          <Button> {Utils.str("See it Alive")} </Button>
-        </section>
-        <Separator size=Theme.Spacing.base2 />
-        <section id="table">
-          <Title size=Theme.FontSize.subtitle color=Theme.Colors.textWhite>
-            {Utils.str("Table")}
-          </Title>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Concept")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str(
-               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-             )}
-          </Text>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Usage")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str("Featured phrases, quotations, etc")}
-          </Text>
-          <Button> {Utils.str("See it Alive")} </Button>
-        </section>
-        <Separator size=Theme.Spacing.base2 />
-        <section id="text">
-          <Title size=Theme.FontSize.subtitle color=Theme.Colors.textWhite>
-            {Utils.str("Text")}
-          </Title>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Concept")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str(
-               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-             )}
-          </Text>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Usage")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str("Featured phrases, quotations, etc")}
-          </Text>
-          <Button> {Utils.str("See it Alive")} </Button>
-        </section>
-        <Separator size=Theme.Spacing.base2 />
-        <section id="title">
-          <Title size=Theme.FontSize.subtitle color=Theme.Colors.textWhite>
-            {Utils.str("Title")}
-          </Title>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Concept")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str(
-               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-             )}
-          </Text>
-          <Title
-            size=Theme.FontSize.footerHeading color=Theme.Colors.textWhite>
-            {Utils.str("Usage")}
-          </Title>
-          <Text align=`center color=Theme.Colors.textWhite>
-            {Utils.str("Featured phrases, quotations, etc")}
-          </Text>
-          <Button> {Utils.str("See it Alive")} </Button>
-        </section>
+        <SystemComponentDescription
+          theme
+          id="accordion"
+          title="Accordion"
+          usage="Frequently Asked Questions, Bullet Points, Features Explanation, etc"
+        />
+        <SystemComponentDescription
+          theme
+          id="blockquote"
+          title="Blockquote"
+          usage="Featured phrases, quotations, etc"
+        />
+        <SystemComponentDescription
+          theme
+          id="button"
+          title="Button"
+          usage="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        />
+        <SystemComponentDescription
+          theme
+          id="datepicker"
+          title="DatePicker"
+          usage="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        />
+        <SystemComponentDescription
+          theme
+          id="fields"
+          title="Fields (Inputs)"
+          usage="Form Fields, Color Picker, etc"
+        />
+        <SystemComponentDescription
+          theme
+          id="popover"
+          title="Popover"
+          usage="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        />
+        <SystemComponentDescription
+          theme
+          id="positioning"
+          title="Positioning"
+          usage="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        />
+        <SystemComponentDescription
+          theme
+          id="spinner"
+          title="Spinner"
+          usage="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        />
+        <SystemComponentDescription
+          theme
+          id="table"
+          title="Table"
+          usage="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        />
+        <SystemComponentDescription
+          theme
+          id="text"
+          title="Text"
+          usage="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        />
+        <SystemComponentDescription
+          theme
+          id="title"
+          title="Title"
+          usage="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        />
       </>
   />;

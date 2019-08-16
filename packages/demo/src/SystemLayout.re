@@ -3,15 +3,15 @@ open AstroDesign;
 module Styles = {
   open Css;
 
-  let wrapper =
+  let wrapper = (~theme) =>
     style([
-      backgroundColor(hex(Theme.Colors.secondary)),
       display(flexBox),
       flexDirection(row),
       height(vh(100.)),
       overflow(hidden),
       width(pct(100.)),
       media("(max-width: 600px)", [flexDirection(column)]),
+      ...Theme.Helpers.background(theme),
     ]);
 
   let navigation =
@@ -20,13 +20,14 @@ module Styles = {
       media("(min-width: 960px)", [width(px(300))]),
     ]);
 
-  let content = (~withPadding) =>
+  let content = (~withPadding, ~theme) =>
     style([
       boxSizing(`borderBox),
       height(vh(100.)),
       padding(withPadding ? px(Theme.Spacing.base) : px(0)),
       overflowY(auto),
       media("(max-width: 600px)", [paddingTop(px(Theme.Spacing.base))]),
+      ...Theme.Helpers.color(theme),
     ]);
 
   let menu = (~theme) =>
@@ -39,10 +40,18 @@ module Styles = {
 
 [@react.component]
 let make = (~menu, ~content, ~theme, ~withPadding=true) =>
-  <div className=Styles.wrapper>
+  <div className={Styles.wrapper(~theme)}>
     <Drawer title="AstroDesign" theme className=Styles.navigation>
       <div className={Styles.menu(~theme)}> menu </div>
     </Drawer>
-    <Divider hideOnMobile=false />
-    <Col className={Styles.content(~withPadding)}> content </Col>
+    <Divider
+      color={
+        switch (theme) {
+        | `dark => Theme.Colors.secondaryLighter
+        | `light => Theme.Colors.border
+        }
+      }
+      hideOnMobile=false
+    />
+    <Col className={Styles.content(~withPadding, ~theme)}> content </Col>
   </div>;

@@ -1,5 +1,7 @@
 import './AccordionStory.bs'
 import './ButtonStory.bs'
+import './BlockquoteStory.bs'
+import './DatePickerStory.bs'
 import './FieldsStory.bs'
 import './PopoverStory.bs'
 import './PositioningElements.bs'
