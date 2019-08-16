@@ -28,6 +28,7 @@
     "react-css-loaders": "^0.0.5",
     "react-dom": "^16.8.1",
     "react-icons": "^3.7.0",
+    "react-switch": "^5.0.1",
     "react-tiny-popover": "^3.4.2",
     "reason-apollo": "^0.16.4",
     "reason-apollo-hooks": "^2.3.1",
