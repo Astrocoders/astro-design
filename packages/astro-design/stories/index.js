@@ -1,4 +1,5 @@
 import './AccordionStory.bs'
+import './StatusBoxStory.bs'
 import './ButtonStory.bs'
 import './BlockquoteStory.bs'
 import './DatePickerStory.bs'
