@@ -1,5 +1,3 @@
-open AstroDesign;
-
 module Styles = {
   open Css;
   let text = (~theme) => style(Theme.Helpers.color(theme));
