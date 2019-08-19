@@ -1,6 +1,6 @@
 {
   "name": "@astrocoders/design",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
