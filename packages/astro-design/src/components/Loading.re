@@ -2,21 +2,11 @@ open AstroDesign;
 
 module Styles = {
   open Css;
-  let text = (~theme) =>
-    style([
-      color(
-        hex(
-          switch (theme) {
-          | `dark => Theme.Colors.textWhite
-          | `light => Theme.Colors.text
-          },
-        ),
-      ),
-    ]);
+  let text = (~theme) => style(Theme.Helpers.color(theme));
 };
 
 [@react.component]
-let make = (~theme=`light, ~className="") =>
+let make = (~theme=`light, ~value="Loading...", ~className="") =>
   <span className={Css.merge([Styles.text(~theme), className])}>
-    {Utils.str("Loading...")}
+    {Utils.str(value)}
   </span>;
