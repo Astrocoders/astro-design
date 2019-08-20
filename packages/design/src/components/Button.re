@@ -89,6 +89,7 @@ let make =
       ~rounded=false,
       ~loading=false,
       ~size=35,
+      ~submit=false,
       ~onClick=_ => (),
       ~className="",
       ~children,
@@ -100,7 +101,8 @@ let make =
     ])}
     onClick
     disabled={disabled || loading}
-    title>
+    title
+    type_={submit ? "submit" : "button"}>
     {loading ? <Spinner /> : children}
   </button>;
 
