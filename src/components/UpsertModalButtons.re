@@ -10,7 +10,10 @@ let make = (~close) =>
   <div className=Styles.wrapper>
     <Button submit=true fullWidth=true> {Utils.str("Submit")} </Button>
     <Button
-      onClick=close type_=`secondary fullWidth=true className=Styles.closeBtn>
+      onClick={_ => close()}
+      type_=`secondary
+      fullWidth=true
+      className=Styles.closeBtn>
       {Utils.str("Close")}
     </Button>
   </div>;
