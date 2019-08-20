@@ -6,9 +6,9 @@ module Styles = {
 };
 
 [@react.component]
-let make = (~submit, ~close) =>
+let make = (~close) =>
   <div className=Styles.wrapper>
-    <Button onClick=submit fullWidth=true> {Utils.str("Submit")} </Button>
+    <Button submit=true fullWidth=true> {Utils.str("Submit")} </Button>
     <Button
       onClick=close type_=`secondary fullWidth=true className=Styles.closeBtn>
       {Utils.str("Close")}
