@@ -37,7 +37,7 @@ let make = (~opener, ~content, ~className="") => {
   let modal = () =>
     <div className=Styles.wrapper>
       <div className=Css.(merge([Styles.box, className]))>
-        {content(~close=_ => setIsOpen(_ => false))}
+        {content(~close=() => setIsOpen(_ => false))}
       </div>
     </div>;
 

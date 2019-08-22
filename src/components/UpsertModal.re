@@ -38,7 +38,7 @@ let make = (~method, ~displayName, ~opener, ~content, ~className="") =>
             rounded=true
             text=`textSecondary
             size=40
-            onClick=close
+            onClick={_ => close()}
             className=Styles.close>
             <ReactIcons.FiX />
           </Button>
