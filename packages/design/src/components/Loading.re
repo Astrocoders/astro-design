@@ -1,6 +1,6 @@
 module Styles = {
   open Css;
-  let text = (~theme) => style(Theme.Helpers.color(theme));
+  let text = (~theme) => style(Theme.Helpers.color(~theme));
 };
 
 [@react.component]

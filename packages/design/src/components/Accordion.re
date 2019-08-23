@@ -13,18 +13,12 @@ module Styles = {
           },
         ),
       ),
-      backgroundColor(
-        hex(
-          switch (theme) {
-          | `dark => Theme.Colors.secondary
-          | `light => Theme.Colors.backgroundContrast
-          },
-        ),
-      ),
       padding(px(Theme.Spacing.baseHalf)),
       display(flexBox),
       alignItems(center),
       cursor(`pointer),
+      transition("all", ~duration=200, ~delay=0, ~timingFunction=`easeInOut),
+      ...Theme.Helpers.background(~theme),
     ];
 
     let openRules = [
@@ -34,6 +28,14 @@ module Styles = {
         ~blur=px(20),
         ~spread=px(1),
         rgba(0, 0, 0, 0.08),
+      ),
+      backgroundColor(
+        hex(
+          switch (theme) {
+          | `dark => Theme.Colors.secondary
+          | `light => Theme.Colors.backgroundContrast
+          },
+        ),
       ),
     ];
 

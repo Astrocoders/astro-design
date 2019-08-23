@@ -9,7 +9,7 @@ type action =
 let make = () => {
   let (state, send) =
     ReactUpdate.useReducer(
-      {date: (Js.Date.make(), Js.Date.make())}, (action, state) =>
+      {date: (Js.Date.make(), Js.Date.make())}, (action, _) =>
       switch (action) {
       | UpdateDate(newDate) => Update({date: newDate})
       }

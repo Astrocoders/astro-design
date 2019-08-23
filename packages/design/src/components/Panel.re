@@ -9,7 +9,7 @@ module Styles = {
       backgroundColor(
         hex(
           switch (theme) {
-          | `dark => Theme.Colors.secondary
+          | `dark => Theme.Colors.secondaryLighter
           | `light => Theme.Colors.backgroundContrast
           },
         ),

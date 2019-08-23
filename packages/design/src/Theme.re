@@ -78,7 +78,7 @@ module Helpers = {
     backgroundColor(
       hex(
         switch (theme) {
-        | `dark => Colors.secondary
+        | `dark => Colors.secondaryLighter
         | `light => Colors.background
         },
       ),
