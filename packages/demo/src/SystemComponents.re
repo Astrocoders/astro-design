@@ -1,4 +1,4 @@
-open AstroDesign;
+open AstrocodersDesign;
 
 [@react.component]
 let make = (~theme) =>

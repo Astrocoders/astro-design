@@ -1,4 +1,4 @@
-open AstroDesign;
+open AstrocodersDesign;
 
 module Styles = {
   open Css;
@@ -11,7 +11,14 @@ module Styles = {
       overflow(hidden),
       width(pct(100.)),
       media("(max-width: 600px)", [flexDirection(column)]),
-      ...Theme.Helpers.background(theme),
+      backgroundColor(
+        hex(
+          switch (theme) {
+          | `dark => Theme.Colors.secondary
+          | `light => Theme.Colors.background
+          },
+        ),
+      ),
     ]);
 
   let navigation =
@@ -27,14 +34,22 @@ module Styles = {
       padding(withPadding ? px(Theme.Spacing.base) : px(0)),
       overflowY(auto),
       media("(max-width: 600px)", [paddingTop(px(Theme.Spacing.base))]),
-      ...Theme.Helpers.color(theme),
+      backgroundColor(
+        hex(
+          switch (theme) {
+          | `dark => Theme.Colors.secondary
+          | `light => Theme.Colors.background
+          },
+        ),
+      ),
+      ...Theme.Helpers.color(~theme),
     ]);
 
   let menu = (~theme) =>
     style([
       flexDirection(column),
       marginTop(px(Theme.Spacing.base)),
-      ...Theme.Helpers.color(theme),
+      ...Theme.Helpers.color(~theme),
     ]);
 };
 

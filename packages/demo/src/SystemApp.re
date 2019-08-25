@@ -1,5 +1,5 @@
 [@react.component]
-let make = (~theme=`light) => {
+let make = (~theme=`dark) => {
   <div>
     {switch (SystemRouter.routeFromPath(ReasonReactRouter.useUrl())) {
      | Home => <SystemHome theme />

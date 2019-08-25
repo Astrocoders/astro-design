@@ -1,4 +1,4 @@
-open AstroDesign;
+open AstrocodersDesign;
 
 module Styles = {
   open Css;
