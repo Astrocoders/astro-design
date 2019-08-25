@@ -5,6 +5,7 @@ yarn-error.log
 
 # Build directory
 /build
+/public
 .DS_Store
 
 # BuckleScript
