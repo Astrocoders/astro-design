@@ -50,7 +50,7 @@ module Styles = {
       backgroundColor(
         hex(
           switch (theme) {
-          | `dark => Theme.Colors.secondary
+          | `dark => Theme.Colors.secondaryActive
           | `light => Theme.Colors.backgroundContrast
           },
         ),
@@ -94,7 +94,14 @@ module Styles = {
       ),
       unsafe("transition", "transform 450ms cubic-bezier(0.23, 1, 0.32, 1)"),
       zIndex(2),
-      ...Theme.Helpers.background(~theme),
+      backgroundColor(
+        hex(
+          switch (theme) {
+          | `dark => Theme.Colors.secondary
+          | `light => Theme.Colors.background
+          },
+        ),
+      ),
     ]);
   let backButton =
     style([
