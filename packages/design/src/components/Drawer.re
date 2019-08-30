@@ -44,7 +44,7 @@ module Styles = {
       ]),
     ]);
 
-  let navbar = (~theme) =>
+  let mobileNav = (~theme) =>
     style([
       alignItems(center),
       backgroundColor(
@@ -64,7 +64,6 @@ module Styles = {
         ),
       ),
       boxSizing(borderBox),
-      display(`flex),
       justifyContent(`spaceBetween),
       flexDirection(`row),
       padding(px(20)),
@@ -72,7 +71,7 @@ module Styles = {
       media("(min-width: 600px)", [display(`none)]),
     ]);
 
-  let sidebar = (~theme, ~isOpen) =>
+  let navbar = (~theme, ~kind) =>
     style([
       color(
         hex(
@@ -81,6 +80,55 @@ module Styles = {
           | `light => Theme.Colors.secondary
           },
         ),
+      ),
+      display(
+        switch (kind) {
+        | `sidebar => `none
+        | `navbar => `flex
+        },
+      ),
+      justifyContent(spaceBetween),
+      backgroundColor(
+        hex(
+          switch (theme) {
+          | `dark => Theme.Colors.secondary
+          | `light => Theme.Colors.background
+          },
+        ),
+      ),
+      media("(max-width: 600px)", [display(none)]),
+    ]);
+
+  let navbarMenuRow = (~theme) =>
+    style([
+      alignItems(center),
+      color(
+        hex(
+          switch (theme) {
+          | `dark => Theme.Colors.textWhite
+          | `light => Theme.Colors.secondary
+          },
+        ),
+      ),
+      display(flexBox),
+      paddingLeft(px(Theme.Spacing.base)),
+    ]);
+
+  let sidebar = (~theme, ~isOpen, ~kind) =>
+    style([
+      color(
+        hex(
+          switch (theme) {
+          | `dark => Theme.Colors.textWhite
+          | `light => Theme.Colors.secondary
+          },
+        ),
+      ),
+      display(
+        switch (kind) {
+        | `sidebar => `block
+        | `navbar => `none
+        },
       ),
       height(vh(100.)),
       media(
@@ -103,6 +151,14 @@ module Styles = {
         ),
       ),
     ]);
+
+  let menu = (~theme) =>
+    style([
+      flexDirection(column),
+      marginTop(px(Theme.Spacing.base)),
+      ...Theme.Helpers.color(~theme),
+    ]);
+
   let backButton =
     style([
       marginRight(px(10)),
@@ -111,7 +167,8 @@ module Styles = {
 };
 
 [@react.component]
-let make = (~theme, ~title, ~auxTitle="", ~className="", ~children) => {
+let make =
+    (~theme, ~title, ~auxTitle="", ~className="", ~kind=`sidebar, ~children) => {
   let navRef = React.useRef(Js.Nullable.null);
   let width =
     switch (Js.Nullable.toOption(React.Ref.current(navRef))) {
@@ -205,7 +262,7 @@ let make = (~theme, ~title, ~auxTitle="", ~className="", ~children) => {
       )
     }
     onTouchEnd={_event => dispatch(TouchEnd)}>
-    <div className={Styles.navbar(~theme)}>
+    <div className={Styles.mobileNav(~theme)}>
       <Title color="inherit" pBottom=0> {Utils.str(title)} </Title>
       <span
         onClick={event => {
@@ -215,6 +272,15 @@ let make = (~theme, ~title, ~auxTitle="", ~className="", ~children) => {
         <ReactIcons.FiMenu color="inherit" size="24" />
       </span>
     </div>
+    <nav className={Styles.navbar(~theme, ~kind)}>
+      <Title color="inherit" pBottom=0> {Utils.str(title)} </Title>
+      <Row
+        verticalAlign=`center
+        horizontalAlign=`flexEnd
+        className={Styles.navbarMenuRow(~theme)}>
+        children
+      </Row>
+    </nav>
     <nav
       onClick={event => ReactEvent.Mouse.stopPropagation(event)}
       style={
@@ -235,7 +301,7 @@ let make = (~theme, ~title, ~auxTitle="", ~className="", ~children) => {
       <div
         className={Css.merge([
           className,
-          Styles.sidebar(~theme, ~isOpen=state.isOpen),
+          Styles.sidebar(~theme, ~isOpen=state.isOpen, ~kind),
         ])}>
         <Row columnOnMobile=false verticalAlign=`center>
           <div
@@ -248,7 +314,7 @@ let make = (~theme, ~title, ~auxTitle="", ~className="", ~children) => {
             {Utils.str(auxTitle)}
           </Title>
         </Row>
-        children
+        <div className={Styles.menu(~theme)}> children </div>
       </div>
     </nav>
   </div>;
