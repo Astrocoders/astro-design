@@ -29,6 +29,7 @@ let make = (~theme) =>
     theme
     menu=
       <>
+        <Separator />
         <MenuItem
           theme
           icon={<ReactIcons.FiHome color="inherit" />}
@@ -37,6 +38,7 @@ let make = (~theme) =>
             ReasonReactRouter.push(SystemRouter.routeToPath(Home))
           }
         />
+        <Separator size=Theme.Spacing.baseHalf />
         <MenuItem
           theme
           icon={<ReactIcons.FiFlag color="inherit" />}
@@ -45,6 +47,7 @@ let make = (~theme) =>
             ReasonReactRouter.push(SystemRouter.routeToPath(GettingStarted))
           }
         />
+        <Separator size=Theme.Spacing.baseHalf />
         <MenuItem
           theme
           icon={<ReactIcons.FiBox color="inherit" />}

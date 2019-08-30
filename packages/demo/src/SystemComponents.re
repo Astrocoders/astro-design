@@ -14,6 +14,7 @@ let make = (~theme) =>
             ReasonReactRouter.push(SystemRouter.routeToPath(Home))
           }
         />
+        <Separator size=Theme.Spacing.baseHalf />
         <MenuItem
           theme
           isActive=true
@@ -23,6 +24,7 @@ let make = (~theme) =>
             ReasonReactRouter.push(SystemRouter.routeToPath(GettingStarted))
           }
         />
+        <Separator size=Theme.Spacing.baseHalf />
         <MenuItem
           theme
           icon={<ReactIcons.FiBox color="inherit" />}
@@ -31,6 +33,7 @@ let make = (~theme) =>
             ReasonReactRouter.push(SystemRouter.routeToPath(Home))
           }
         />
+        <Separator size=Theme.Spacing.baseHalf />
         <SubmenuItem theme text="Accordion" link="#accordion" />
         <SubmenuItem theme text="Blockquote" link="#blockquore" />
         <SubmenuItem theme text="Button" link="#button" />

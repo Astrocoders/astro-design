@@ -14,6 +14,7 @@ let make = (~theme) =>
             ReasonReactRouter.push(SystemRouter.routeToPath(Home))
           }
         />
+        <Separator size=Theme.Spacing.baseHalf />
         <MenuItem
           theme
           isActive=true
@@ -23,6 +24,7 @@ let make = (~theme) =>
             ReasonReactRouter.push(SystemRouter.routeToPath(GettingStarted))
           }
         />
+        <Separator size=Theme.Spacing.baseHalf />
         <SubmenuItem theme text="Installation" link="#" />
         <SubmenuItem theme text="Patterns" link="#" />
         <SubmenuItem theme text="Colors" link="#" />

@@ -2,7 +2,7 @@ open AstrocodersDesign;
 
 module Styles = {
   open Css;
-  let section = (~theme) => style(Theme.Helpers.color(theme));
+  let section = (~theme) => style(Theme.Helpers.color(~theme));
 };
 
 [@react.component]
