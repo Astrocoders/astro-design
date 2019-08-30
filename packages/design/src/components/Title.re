@@ -2,7 +2,15 @@ module Styles = {
   open Css;
 
   let title =
-      (~justify, ~titleColor, ~titleSize, ~pBottom, ~isUppercase, ~weight) =>
+      (
+        ~align,
+        ~justify,
+        ~titleColor,
+        ~titleSize,
+        ~pBottom,
+        ~isUppercase,
+        ~weight,
+      ) =>
     style([
       display(flexBox),
       alignItems(center),
@@ -12,6 +20,7 @@ module Styles = {
       fontWeight(`num(weight)),
       paddingBottom(px(pBottom)),
       textTransform(isUppercase ? uppercase : none),
+      textAlign(align),
       width(auto),
     ]);
 };
@@ -20,6 +29,7 @@ module Styles = {
 let make =
     (
       ~className="",
+      ~align=`left,
       ~justify=`flexStart,
       ~color=Theme.Colors.secondary,
       ~size=Theme.FontSize.title,
@@ -32,6 +42,7 @@ let make =
     className={Css.merge([
       Styles.title(
         ~justify,
+        ~align,
         ~titleColor=color,
         ~pBottom,
         ~titleSize=size,

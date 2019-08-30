@@ -16,7 +16,6 @@ module Styles = {
       ),
       cursor(`pointer),
       display(flexBox),
-      marginBottom(px(Theme.Spacing.baseHalf)),
       hover([color(hex(Theme.Colors.primary))]),
     ]);
 };
