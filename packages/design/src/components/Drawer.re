@@ -63,6 +63,7 @@ module Styles = {
           },
         ),
       ),
+      display(flexBox),
       boxSizing(borderBox),
       justifyContent(`spaceBetween),
       flexDirection(`row),
@@ -88,14 +89,6 @@ module Styles = {
         },
       ),
       justifyContent(spaceBetween),
-      backgroundColor(
-        hex(
-          switch (theme) {
-          | `dark => Theme.Colors.secondary
-          | `light => Theme.Colors.background
-          },
-        ),
-      ),
       media("(max-width: 600px)", [display(none)]),
     ]);
 
@@ -167,8 +160,7 @@ module Styles = {
 };
 
 [@react.component]
-let make =
-    (~theme, ~title, ~auxTitle="", ~className="", ~kind=`sidebar, ~children) => {
+let make = (~theme, ~logo, ~className="", ~kind=`sidebar, ~children) => {
   let navRef = React.useRef(Js.Nullable.null);
   let width =
     switch (Js.Nullable.toOption(React.Ref.current(navRef))) {
@@ -263,17 +255,17 @@ let make =
     }
     onTouchEnd={_event => dispatch(TouchEnd)}>
     <div className={Styles.mobileNav(~theme)}>
-      <Title color="inherit" pBottom=0> {Utils.str(title)} </Title>
-      <span
+      logo
+      <div
         onClick={event => {
           ReactEvent.Mouse.stopPropagation(event);
           dispatch(ToggleMenu(true));
         }}>
         <ReactIcons.FiMenu color="inherit" size="24" />
-      </span>
+      </div>
     </div>
-    <nav className={Styles.navbar(~theme, ~kind)}>
-      <Title color="inherit" pBottom=0> {Utils.str(title)} </Title>
+    <nav className=Css.(merge([Styles.navbar(~theme, ~kind), className]))>
+      logo
       <Row
         verticalAlign=`center
         horizontalAlign=`flexEnd
@@ -309,10 +301,7 @@ let make =
             className=Styles.backButton>
             <ReactIcons.FiArrowLeft color="inherit" size="24" />
           </div>
-          <Title color="inherit" pBottom=0> {Utils.str(title)} </Title>
-          <Title size=Theme.FontSize.footerHeading color="inherit">
-            {Utils.str(auxTitle)}
-          </Title>
+          logo
         </Row>
         <div className={Styles.menu(~theme)}> children </div>
       </div>
