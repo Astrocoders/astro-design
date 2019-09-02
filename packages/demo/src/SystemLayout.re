@@ -56,7 +56,7 @@ module Styles = {
 [@react.component]
 let make = (~menu, ~content, ~theme, ~withPadding=true) =>
   <div className={Styles.wrapper(~theme)}>
-    <Drawer title="AstroDesign" theme className=Styles.navigation>
+    <Drawer logo={<Logo theme />} theme className=Styles.navigation>
       <div className={Styles.menu(~theme)}> menu </div>
     </Drawer>
     <Divider
