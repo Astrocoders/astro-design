@@ -12,16 +12,12 @@ module Styles = {
         ~weight,
       ) =>
     style([
-      display(flexBox),
-      alignItems(center),
-      justifyContent(justify),
       color(hex(titleColor)),
       fontSize(rem(titleSize)),
       fontWeight(`num(weight)),
       paddingBottom(px(pBottom)),
       textTransform(isUppercase ? uppercase : none),
       textAlign(align),
-      width(auto),
     ]);
 };
 
