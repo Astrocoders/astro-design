@@ -90,7 +90,7 @@ let make =
       ~loading=false,
       ~size=35,
       ~submit=false,
-      ~onClick=_ => (),
+      ~onClick=?,
       ~className="",
       ~children,
     ) =>
@@ -99,11 +99,9 @@ let make =
       Styles.button(~type_, ~text, ~fullWidth, ~rounded, ~size),
       className,
     ])}
-    onClick
+    ?onClick
     disabled={disabled || loading}
     title
     type_={submit ? "submit" : "button"}>
     {loading ? <Spinner /> : children}
   </button>;
-
-let default = make;

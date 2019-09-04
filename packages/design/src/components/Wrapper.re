@@ -18,5 +18,3 @@ module Styles = {
 let make = (~className="", ~children) => {
   <div className={className ++ " " ++ Styles.wrapper}> children </div>;
 };
-
-let default = make;

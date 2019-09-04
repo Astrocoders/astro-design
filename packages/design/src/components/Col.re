@@ -30,5 +30,3 @@ let make =
     children
   </div>;
 };
-
-let default = make;
