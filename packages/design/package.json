@@ -7,8 +7,8 @@
     "bs:build": "bsb -make-world",
     "bs:watch": "bsb -make-world -clean-world -w",
     "clean": "bsb -clean-world",
-    "storybook:build": "build-storybook -c .storybook -o .components",
-    "storybook:deploy": "storybook-to-ghpages -o .components",
+    "storybook:build": "build-storybook -c .storybook -o build",
+    "storybook:deploy": "storybook-to-ghpages -o build",
     "storybook:start": "start-storybook --port=7007",
     "lint:staged": "lint-staged",
     "test": "yarn bs:build && react-scripts test --env=jsdom"
@@ -45,8 +45,7 @@
     "html-webpack-plugin": "^3.2.0",
     "lint-staged": "^9.2.1",
     "pre-commit": "^1.2.2",
-    "prettier": "^1.18.2",
-    "react-scripts": "^3.0.1"
+    "prettier": "^1.18.2"
   },
   "pre-commit": "lint:staged",
   "lint-staged": {
