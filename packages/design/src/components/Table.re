@@ -118,7 +118,7 @@ let make =
   let displayStart = Js.Math.min_int(page * rows + 1, totalCount);
   let displayEnd = Js.Math.min_int((page + 1) * rows, totalCount);
 
-  let helper = (~children) => <tr> <HelperTd> children </HelperTd> </tr>;
+  let renderHelperRow = children => <tr> <HelperTd> children </HelperTd> </tr>;
 
   let option = value =>
     <option className=Styles.rowsSelectOption value>
@@ -164,14 +164,13 @@ let make =
         </thead>
         <tbody className={Styles.tableText(~theme)}>
           {loading
-             ? helper(<Loading theme />)
+             ? renderHelperRow(<Loading theme />)
              : totalCount === 0
-                 ? helper(Utils.str("No entries")) : React.null}
-          {Belt.Array.map(
-             Belt.Array.slice(data, displayStart - 1, displayEnd),
-             renderRow,
-           )
-           |> React.array}
+                 ? renderHelperRow(Utils.str("No entries")) : React.null}
+          {data
+           ->Belt.Array.slice(~offset=displayStart - 1, ~len=displayEnd)
+           ->Belt.Array.map(renderRow)
+           ->React.array}
         </tbody>
       </table>
       <div className=Styles.pagination>

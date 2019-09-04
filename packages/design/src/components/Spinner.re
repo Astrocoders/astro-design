@@ -21,5 +21,3 @@ module Styles = {
 
 [@react.component]
 let make = () => <ReactIcons.FiLoader className=Styles.spinner />;
-
-let default = make;

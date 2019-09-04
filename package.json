@@ -42,10 +42,9 @@
     ]
   },
   "scripts": {
-    "start": "yarn bs:watch",
-    "test": "yarn bs:build",
-    "bs:build": "lerna run bs:build",
-    "bs:watch": "lerna run bs:watch",
+    "start": "lerna run bs:watch",
+    "test": "lerna run bs:build",
+    "build": "lerna run bs:build",
     "clean": "lerna run clean",
     "lint:staged": "lint-staged",
     "bs:setup": "bsb -make-world",

@@ -5,7 +5,6 @@ let make = (~theme=`dark) => {
      | Home => <SystemHome theme />
      | GettingStarted => <SystemGettingStarted theme />
      | Components => <SystemComponents theme />
-     | _ => <SystemHome theme />
      }}
   </div>;
 };

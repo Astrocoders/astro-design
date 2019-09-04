@@ -13,6 +13,7 @@ module Styles = {
       ) =>
     style([
       color(hex(titleColor)),
+      justifyContent(justify),
       fontSize(rem(titleSize)),
       fontWeight(`num(weight)),
       paddingBottom(px(pBottom)),
