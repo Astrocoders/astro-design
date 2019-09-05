@@ -117,12 +117,6 @@ module Styles = {
           },
         ),
       ),
-      display(
-        switch (kind) {
-        | `sidebar => `block
-        | `navbar => `none
-        },
-      ),
       height(vh(100.)),
       media(
         "(max-width: 600px)",
@@ -131,6 +125,17 @@ module Styles = {
           width(pct(85.)),
           top(px(0)),
           transform(translateX(isOpen ? pct(0.) : pct(-100.))),
+        ],
+      ),
+      media(
+        "(min-width: 601px)",
+        [
+          display(
+            switch (kind) {
+            | `sidebar => `block
+            | `navbar => `none
+            },
+          ),
         ],
       ),
       unsafe("transition", "transform 450ms cubic-bezier(0.23, 1, 0.32, 1)"),
