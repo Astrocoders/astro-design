@@ -23,11 +23,13 @@ module Styles = {
 
     let openRules = [
       boxShadow(
-        ~x=px(1),
-        ~y=px(1),
-        ~blur=px(20),
-        ~spread=px(1),
-        rgba(0, 0, 0, 0.08),
+        Shadow.box(
+          ~x=px(1),
+          ~y=px(1),
+          ~blur=px(20),
+          ~spread=px(1),
+          rgba(0, 0, 0, 0.08),
+        ),
       ),
       backgroundColor(
         hex(
@@ -46,7 +48,7 @@ module Styles = {
     style([
       fontSize(rem(1.3)),
       marginRight(px(Theme.Spacing.base)),
-      transform(rotate(deg(open_ ? 90 : 0))),
+      transform(rotate(deg(open_ ? 90. : 0.))),
     ]);
 
   let title = style([flexGrow(1.0), fontSize(rem(1.0))]);

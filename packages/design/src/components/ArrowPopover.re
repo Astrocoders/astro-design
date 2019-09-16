@@ -6,11 +6,13 @@ module ArrowContainer = {
       style([
         backgroundColor(hex(Theme.Colors.widget)),
         boxShadow(
-          ~x=px(1),
-          ~y=px(1),
-          ~blur=px(2),
-          ~spread=px(1),
-          hex(Theme.Colors.widgetShadow),
+          Shadow.box(
+            ~x=px(1),
+            ~y=px(1),
+            ~blur=px(2),
+            ~spread=px(1),
+            hex(Theme.Colors.widgetShadow),
+          ),
         ),
       ]);
   };

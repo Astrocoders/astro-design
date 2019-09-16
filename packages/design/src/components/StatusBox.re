@@ -24,7 +24,7 @@ module Styles = {
 
   let icon =
     style([
-      flexShrink(0),
+      flexShrink(0.),
       padding2(~v=rem(0.), ~h=rem(1.25)),
       fontSize(rem(2.)),
       display(flexBox),
