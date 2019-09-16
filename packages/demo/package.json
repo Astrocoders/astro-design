@@ -1,7 +1,7 @@
 {
   "name": "demo",
   "private": true,
-  "version": "1.2.0",
+  "version": "1.2.1",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -17,7 +17,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@astrocoders/design": "^1.2.0",
+    "@astrocoders/design": "^1.2.1",
     "bs-css": "^10.0.0",
     "bs-react-icons": "astrocoders/bs-react-icons",
     "postinstall-postinstall": "^2.0.0",
