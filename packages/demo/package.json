@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "@astrocoders/design": "^1.1.2",
-    "bs-css": "^8.0.4",
+    "bs-css": "^10.0.0",
     "bs-react-icons": "astrocoders/bs-react-icons",
     "postinstall-postinstall": "^2.0.0",
     "react": "^16.8.1",
