@@ -19,9 +19,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@apollo/react-hooks": "^3.0.0",
+    "@apollo/react-hooks": "^3.1.1",
     "@wojtekmaj/react-daterange-picker": "^2.2.0",
-    "bs-css": "^8.0.4",
+    "bs-css": "^10.0.0",
     "bs-react-icons": "astrocoders/bs-react-icons",
     "bs-webapi": "^0.15.2",
     "react": "^16.8.1",
@@ -30,8 +30,8 @@
     "react-icons": "^3.7.0",
     "react-switch": "^5.0.1",
     "react-tiny-popover": "^3.4.2",
-    "reason-apollo": "^0.16.4",
-    "reason-apollo-hooks": "^2.3.1",
+    "reason-apollo": "^0.17.0",
+    "reason-apollo-hooks": "^2.5.1",
     "reason-react": "^0.7.0",
     "reason-react-update": "^0.1.1"
   },
