@@ -72,5 +72,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "peerDependencies": {
+    "babel-loader": "^8.0.6"
   }
 }
