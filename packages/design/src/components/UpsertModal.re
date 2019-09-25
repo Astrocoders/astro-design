@@ -29,6 +29,7 @@ let make = (~method, ~displayName, ~opener, ~content, ~className="") =>
                switch (method) {
                | `insert => "Insert"
                | `update => "Update"
+               | `remove => "Remove"
                },
              )}
             {Utils.str(" " ++ displayName)}
