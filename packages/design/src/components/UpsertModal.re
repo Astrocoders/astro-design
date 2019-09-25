@@ -13,7 +13,7 @@ module Styles = {
 };
 
 [@react.component]
-let make = (~method, ~displayName, ~opener, ~content, ~className="") =>
+let make = (~displayName, ~opener, ~content, ~className="") =>
   <Modal
     opener
     content={(~close) =>
@@ -25,13 +25,7 @@ let make = (~method, ~displayName, ~opener, ~content, ~className="") =>
             justify=Css.flexStart
             pBottom=0
             className=Styles.title>
-            {Utils.str(
-               switch (method) {
-               | `insert => "Insert"
-               | `update => "Update"
-               },
-             )}
-            {Utils.str(" " ++ displayName)}
+            {React.string(displayName)}
           </Title>
           <Button
             type_=`transparent
