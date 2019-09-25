@@ -24,5 +24,8 @@
     "reason-react",
     "reason-react-update"
   ],
-  "refmt": 3
+  "refmt": 3,
+  "warnings": {
+    "error": "+8"
+  },
 }
