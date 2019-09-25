@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/Astrocoders/astro-design/compare/@astrocoders/design@1.3.0...@astrocoders/design@1.4.0) (2019-09-25)
+
+
+### Features
+
+* **bsconfig:** make non-exhaustive pattern matches a hard error ([4887a03](https://github.com/Astrocoders/astro-design/commit/4887a03))
+
+
+
+
+
 # [1.3.0](https://github.com/Astrocoders/astro-design/compare/@astrocoders/design@1.2.1...@astrocoders/design@1.3.0) (2019-09-25)
 
 
