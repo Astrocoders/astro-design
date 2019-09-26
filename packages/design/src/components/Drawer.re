@@ -157,6 +157,8 @@ module Styles = {
       ...Theme.Helpers.color(~theme),
     ]);
 
+  let menuTrigger = style([cursor(`pointer)]);
+
   let backButton =
     style([
       marginRight(px(10)),
@@ -262,6 +264,7 @@ let make = (~theme, ~logo, ~className="", ~kind=`sidebar, ~children) => {
     <div className={Styles.mobileNav(~theme)}>
       logo
       <div
+        className=Styles.menuTrigger
         onClick={event => {
           ReactEvent.Mouse.stopPropagation(event);
           dispatch(ToggleMenu(true));
