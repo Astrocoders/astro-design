@@ -82,11 +82,13 @@ module Styles = {
 };
 
 type state = {
+  search: string,
   page: int,
   rows: int,
 };
 
 type action =
+  | SetSearch(string)
   | NextPage
   | PreviousPage
   | ChangeNumberOfRows(int);
@@ -102,16 +104,23 @@ let make =
       ~theme=`light,
       ~loading=false,
       ~className="",
+      ~onSearchChange=?,
+      ~searchValue="",
     ) => {
-  let ({page, rows}, dispatch) =
+  let ({page, rows, search}, dispatch) =
     React.useReducer(
       (state, action) =>
         switch (action) {
+        | SetSearch(search) => {...state, search}
         | NextPage => {...state, page: state.page + 1}
         | PreviousPage => {...state, page: state.page - 1}
-        | ChangeNumberOfRows(number) => {rows: number, page: 0}
+        | ChangeNumberOfRows(number) => {
+            rows: number,
+            page: 0,
+            search: state.search,
+          }
         },
-      {page: 0, rows: 10},
+      {page: 0, rows: 10, search: searchValue},
     );
 
   let totalCount = Belt.Array.length(data);
@@ -145,8 +154,18 @@ let make =
         <ReactIcons.FiSearch />
         <input
           type_="text"
+          value=search
           className=Styles.searchInput
           placeholder={"Search for " ++ displayName}
+          onChange={e =>
+            dispatch(SetSearch(e->ReactEvent.Form.target##value))
+          }
+          onBlur={_ =>
+            switch (onSearchChange) {
+            | Some(onSearchChange) => onSearchChange(search)
+            | None => ()
+            }
+          }
         />
       </div>
     </div>
