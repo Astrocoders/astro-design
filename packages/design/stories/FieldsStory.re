@@ -2,6 +2,24 @@ Storybook.(
   storiesOf("Fields/Input", module_)
   |> add("default", () => <Input name="example" label="Example" />)
   |> add("Dark", () => <Input name="example" label="Example" theme=`dark />)
+  |> add("With Mask", () => {
+       let (value, setValue) = React.useState(_ => "");
+       <WithMaskedField
+         mask=`cpf onChangeText={text => setValue(_ => text)} value>
+         ...{(~value, ~onChangeText, ~maxLength as _) =>
+           <Input
+             name="example"
+             value
+             onChange={event => {
+               event->ReactEvent.Synthetic.persist;
+               onChangeText(ReactEvent.Form.target(event)##value);
+             }}
+             label="Example"
+             theme=`dark
+           />
+         }
+       </WithMaskedField>;
+     })
   |> add("Color", () =>
        <Input
          name="example"

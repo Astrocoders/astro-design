@@ -12765,6 +12765,11 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+re-containers@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/re-containers/-/re-containers-4.0.0.tgz#aca7e5d26d8afbf0f195475fc8d502d6b03c5bb1"
+  integrity sha512-ZgY5B+d33H+nalyJoTY/oKr9ChdE0t4sY+s5t0trJzU7vHcpguda+1kYLn2nmRsdDoqY56G+cAauJ3Zjykjewg==
+
 react-addons-create-fragment@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/react-addons-create-fragment/-/react-addons-create-fragment-15.6.2.tgz#a394de7c2c7becd6b5475ba1b97ac472ce7c74f8"
@@ -13306,6 +13311,11 @@ reason-apollo@^0.17.0:
     graphql-tag "^2.10.0"
     react-apollo "^2.5.8"
     subscriptions-transport-ws "^0.9.16"
+
+reason-react-compat@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/reason-react-compat/-/reason-react-compat-0.4.0.tgz#9c6705f9bd67e7ff7219355f3a95fd67442b578d"
+  integrity sha512-Bwwgb6AHusLiRhdd0aupFAuMYaG3gnwR6iHYYlj9gfLD6Uxp53dtJIhS2ZMTEpCSU1JE2X0k7x3rru1IRdx9FQ==
 
 reason-react-update@^0.1.1:
   version "0.1.1"
@@ -15429,6 +15439,11 @@ validate-npm-package-name@^3.0.0:
   integrity sha1-X6kS2B630MdK/BQN5zF/DKffQ34=
   dependencies:
     builtins "^1.0.3"
+
+vanilla-masker@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/vanilla-masker/-/vanilla-masker-1.2.0.tgz#c2830e9d994a5fecd2261506477c2707fe589756"
+  integrity sha1-woMOnZlKX+zSJhUGR3wnB/5Yl1Y=
 
 vary@~1.1.2:
   version "1.1.2"

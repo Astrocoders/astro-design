@@ -19,9 +19,11 @@
     "bs-css",
     "bs-react-icons",
     "bs-webapi",
+    "re-containers",
     "reason-apollo-hooks",
     "reason-apollo",
     "reason-react",
+    "reason-react-compat",
     "reason-react-update"
   ],
   "refmt": 3
