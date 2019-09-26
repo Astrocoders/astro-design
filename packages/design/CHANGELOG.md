@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/Astrocoders/astro-design/compare/@astrocoders/design@1.4.0...@astrocoders/design@1.5.0) (2019-09-26)
+
+
+### Features
+
+* **table:** search feature on table ([0cdd5aa](https://github.com/Astrocoders/astro-design/commit/0cdd5aa))
+
+
+
+
+
 # [1.4.0](https://github.com/Astrocoders/astro-design/compare/@astrocoders/design@1.3.0...@astrocoders/design@1.4.0) (2019-09-25)
 
 
