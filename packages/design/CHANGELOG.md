@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/Astrocoders/astro-design/compare/@astrocoders/design@1.5.0...@astrocoders/design@1.7.0) (2019-10-13)
+
+
+### Features
+
+* bump minor version ([48a6d9a](https://github.com/Astrocoders/astro-design/commit/48a6d9a))
+
+
+
+
+
 # [1.5.0](https://github.com/Astrocoders/astro-design/compare/@astrocoders/design@1.4.0...@astrocoders/design@1.5.0) (2019-09-26)
 
 
