@@ -61,7 +61,6 @@ module Spacing = {
 };
 
 module Helpers = {
-  open Css;
   let fullCenter = [alignItems(center), justifyContent(center)];
   let centerBlock = [marginLeft(auto), marginRight(auto)];
   let color = (~theme) => [
@@ -127,17 +126,15 @@ module Bases = {
     ]);
 };
 
-Css.(global("html, body", [color(hex(Colors.text))]));
+global("html, body", [color(hex(Colors.text))]);
 
-Css.(
-  global(
-    "*",
-    [
-      boxSizing(`borderBox),
-      fontFamily("sans-serif"),
-      padding(px(0)),
-      margin(px(0)),
-      outlineWidth(px(0)),
-    ],
-  )
+global(
+  "*",
+  [
+    boxSizing(`borderBox),
+    fontFamily("sans-serif"),
+    padding(px(0)),
+    margin(px(0)),
+    outlineWidth(px(0)),
+  ],
 );
