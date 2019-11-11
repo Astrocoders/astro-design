@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/Astrocoders/astro-design/compare/@astrocoders/design@1.7.0...@astrocoders/design@1.8.0) (2019-11-11)
+
+
+### Features
+
+* **avatar:** add avatar ([413ae26](https://github.com/Astrocoders/astro-design/commit/413ae267c97b406b3eda95d0887aa0c89e6ad2e1))
+
+
+
+
+
 # [1.7.0](https://github.com/Astrocoders/astro-design/compare/@astrocoders/design@1.5.0...@astrocoders/design@1.7.0) (2019-10-13)
 
 
