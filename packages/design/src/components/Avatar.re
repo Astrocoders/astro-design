@@ -5,5 +5,8 @@ module Styles = {
 };
 
 [@react.component]
-let make = (~src, ~size=32, ()) =>
-  <img src className={Styles.avatar(~size)} />;
+let make = (~src, ~size=32, ~className=?, ()) =>
+  <img
+    src
+    className={Cn.make([Styles.avatar(~size), Cn.unpack(className)])}
+  />;
