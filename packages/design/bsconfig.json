@@ -25,7 +25,8 @@
     "reason-apollo",
     "reason-react",
     "reason-react-compat",
-    "reason-react-update"
+    "reason-react-update",
+    "re-classnames"
   ],
   "refmt": 3,
   "warnings": {
