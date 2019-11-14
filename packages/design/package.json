@@ -1,6 +1,6 @@
 {
   "name": "@astrocoders/design",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "scripts": {
     "start": "yarn storybook:start",
     "build": "yarn storybook:build",
