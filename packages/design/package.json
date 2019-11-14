@@ -35,7 +35,6 @@
     "reason-apollo": "^0.17.0",
     "reason-apollo-hooks": "^2.7.0",
     "reason-react": "^0.7.0",
-    "reason-react-compat": "^1.0.0",
     "reason-react-update": "^1.0.0",
     "vanilla-masker": "^1.2.0"
   },
